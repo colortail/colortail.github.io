@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<div class="container">
+	<div class="row">
+		<div class="well">
+		<h1><a href="{{ page.url }}" >{{ page.title }}</a></h1>
+		<p>{{ page.date|date:"%Y-%m-%d" }}</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span3">	
+			<a href="http://www.colortail.info"><img src="http://pic.yupoo.com/tan91319/E9SW5wNm/eFlqp.jpg"/></a>
+		</div>
+		<div class="span9">
+			<div class="well">
+				{{ content }}
+			</div>
+		</div>
+	</div>
+</div>
