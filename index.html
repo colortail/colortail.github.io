@@ -1,48 +1,22 @@
 ---
 layout: default
-title: colortail
 ---
 
-<div id="main" class="container-fluid">
-	<div class="row">
-	<div class="span12">
-		<div class="well">
-		<h2>colortail</h2>
-		<p>
-			<strong>暮春者，春服既成，冠者五六人，童子六七人，浴乎沂，风乎舞雩,咏而归</strong><br/>
-			When spring comes, there are some youths and teens with clean clothes, swimming in the river, catching the wind, singing all their way home.<br/>
-		</p>
-		</div>
-	</div>
-	</div>
-	<div class="row">
-		<div class="span7">
-			<div class="well">
-			<h2>Last Posts<span class="small">(<a href="#">all</a>)</span></h2>
-			<ul>
-			{% for post in site.posts %}
-	　　　　　　<li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-				<span>{{ post.date | date_to_string }}</span></li>
-		　　{% endfor %}
-	　　	</ul>
-			</div>
-		</div>
-		<div class="span5">
-			<div class="well">
-			<h4>Learning March</h4>
-			<ul>
-                <li>Data Structure and Algorithm</li>
-				<li>Database</li>
-				<li>Statistic Inference and Learning</li>
-				<li>Web</li>
-			</ul>
-			<h4>Contact</h4>
-			<span><a href="https://github.com/colortail">github</a></span>
-			<span><a href="http://weibo.com/crazedog">新浪微博</a></span>
-	        </div>
-		</div>
-	</div>
-　　<div>
-		
-	</div>　　
+<div class="home">
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+        <br>
+        <h3>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h3>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y %H:%m" }}</span>
+        <hr id="line">
+		<div class="content">
+		{{ post.excerpt }}
+        </div>
+		<br>
+      </li>
+    {% endfor %}
+  </ul>
 </div>
