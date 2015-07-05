@@ -38,7 +38,7 @@ final不能表示一个对象在函数内不可修改。Java里就没有机制�
 但是确实有这种写法，而且这种写法在某些情况下是必须的：
 {% highlight java %}
 public void foo(final Type argu) {
-   ...？
+  ...
 }
 {% endhighlight %}
 这种情况是函数内有匿名对象，且匿名对象使用了这个参数。
