@@ -1,6 +1,7 @@
 # Site settings
-title: 虫尾山
+title: colortail
 email: tangoghvan@126.com
+author: colortail
 description: colortail for fun
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.colortail.com" # the base hostname & protocol for your site
@@ -9,3 +10,4 @@ github_username:  colortail
 
 # Build settings
 markdown: kramdown
+disqus: colortail

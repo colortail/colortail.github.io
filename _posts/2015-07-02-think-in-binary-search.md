@@ -19,13 +19,13 @@ categories: dsa
 
 这里的问题源于*Algorithm 4th*中，对符号表介绍了几种典型操作：
 {% highlight java %}
-	class ST<Key extends Comparable<key>, Value> {
-		...
-		int rank(Key key);	//小于key值的元素个数，也就是key的排名
-		Key select(int k);
-		Key floor(Key key);	//小于等于key的最大值，即key的下整
-		Key ceiling(Key key); //大于等于key的最小值，即key的上整
-	}
+class ST<Key extends Comparable<key>, Value> {
+	...
+	int rank(Key key);	//小于key值的元素个数，也就是key的排名
+	Key select(int k);
+	Key floor(Key key);	//小于等于key的最大值，即key的下整
+	Key ceiling(Key key); //大于等于key的最小值，即key的上整
+}
 {% endhighlight %}
 虽然符号表的键值唯一，使用数组时可以直接使用二分查找，但这里希望将rank等操作通过二分查找推广到更广义的含有重复元素的数组上。
 
@@ -45,13 +45,13 @@ categories: dsa
 
 3.若e == key，则表示查询到（查询的是最右侧元素），否则e的下标实际是小于key的最大元素.(这里直接返回-1)
 {% highlight python %}
-	def binSearch(key, list, lo, hi):
+def binSearch(key, list, lo, hi):
 	while lo + 1 != hi:
-		mi = (lo + hi)/2
-		if key < list[mi]:
-			hi = mi
-		else:
-			lo = mi
+	mi = (lo + hi)/2
+	if key < list[mi]:
+		hi = mi
+	else:
+		lo = mi
 	return lo if key == list[lo] else -1
 {% endhighlight %}
 
@@ -67,20 +67,20 @@ categories: dsa
 
 非常特殊的情况是，key值是数组里第一个元素，这时lo == 0,hi == 1,最终结果是[key),但是实际的rank应该为lo，而不是hi。此时key == list[lo]。另外若元素不存在，则key < list[lo]的。
 {% highlight python %}
-	def rank(key, list, lo, hi):
-		while lo + 1 != hi:
-			mi = (lo + hi)/2
-			if key <= list[mi]:
-				hi = mi
-			else:
-				lo = mi
-		return lo if key <= list[lo] else hi
+def rank(key, list, lo, hi):
+	while lo + 1 != hi:
+		mi = (lo + hi)/2
+		if key <= list[mi]:
+			hi = mi
+		else:
+			lo = mi
+	return lo if key <= list[lo] else hi
 {% endhighlight %}
 
 比如下面得到 "5 0"
 {% highlight python %}
-	if __name__ == '__main__':
-		list = [1,2,3,3,3,3,4]
-		print binSearch(3,list,0,len(list))
-		print rank(1,list,0,len(list))		
+if __name__ == '__main__':
+	list = [1,2,3,3,3,3,4]
+	print binSearch(3,list,0,len(list))
+	print rank(1,list,0,len(list))		
 {% endhighlight %}
