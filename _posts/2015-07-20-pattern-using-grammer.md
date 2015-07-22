@@ -5,6 +5,7 @@ categories: grammer
 ---
 深深被下面这个单例折服了，这可能是静态内部类使用的正确方式。
 静态内部类私有的成员也可以访问啊 ==!!!
+
 {% highlight java %}
 public class Singleton {
 
@@ -23,6 +24,7 @@ public class Singleton {
 
 这个版本的单例更是让人表示压力很大啊
 对class做同步，对静态成员做volatile，真是...==
+
 {% highlight java %}
 public class Singleton {  
     private static volatile Singleton instance;  
