@@ -59,3 +59,20 @@ public void foo(final Type argu) {
   return new Abstract(argu);
 }
 {% endhighlight %}
+
+------
+####更正
+
+{% highlight c %}
+void foo(const Type argu);
+void foo(Type const argu);
+{% endhighlight %}
+这两没区别。首先这里不该直接传递对象，应该是传递Type & argu。
+
+那const Type & argu和**Type cosnt & argu**是没区别的，当时之所以提出这个问题，就是看到后面一种情况不太理解，其实两个并没有区别。
+
+问题是常量指针和指针常量是有区别的，const Type *pargu指针所指向的对象不可变，Type * const pargu表示指针本身不可指向另外的对象。
+
+const Type &argu 和Type & const argu同理（这个后者毫无意义）。
+
+总之貌似，错的很基础。
