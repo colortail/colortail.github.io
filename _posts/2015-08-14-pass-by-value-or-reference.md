@@ -3,9 +3,6 @@ layout: post
 title: 传值和传引用
 categories: grammer
 ---
-###传值和传引用
-####Comparison between pass-by-value and pass-by-reference on Java and C++
-------------
 Effective C++ 3th的条款20指出
 >Prefer pass-by-reference to const to pass-by-value
 
@@ -34,7 +31,7 @@ public class JPassByValue {
 
 那么，C++的call-by-reference！虽然结果是"是call-by-reference"，但这绝不是因为传递进去的引用就指向了另外一个对象。
 
-```c++
+```cpp
 void changeString(std::string& s) {
 	std::cout << "旧string：" << &s << std::endl;
 	std::string sp = "是call-by-reference";
@@ -54,7 +51,7 @@ int main() {
 
 结果是这样的：
 
-![pass-by-reference] (http://pic.yupoo.com/tan91319/ESp46vmv/medish.jpg)
+![pass-by-reference](http://pic.yupoo.com/tan91319/ESp46vmv/medish.jpg)
 
 所以地址还是没变，所以根本毫无区别。(ಥ_ಥ)
 这是因为**一个引用在初始化后，是不能指向另外一个对象的。**
