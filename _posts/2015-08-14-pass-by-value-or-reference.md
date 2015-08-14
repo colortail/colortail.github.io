@@ -12,7 +12,7 @@ Effective C++ 3th的条款20指出
 
 那没有真正的pass-by-reference，Java是不是少了什么？
 
-```Java
+{% highlight java %}
 public class JPassByValue {
 	
 	public static void main(String[] args) {
@@ -25,13 +25,13 @@ public class JPassByValue {
 		s = "是call-by-reference";
 	}
 }
-```
+{% endhighlight %}
 
 这个函数当然改变不了外部的s，结果是"是call-by-value"。也就是说，因为pass-by-value的关系，这个指针s所指向的东西是不会变的。
 
 那么，C++的call-by-reference！虽然结果是"是call-by-reference"，但这绝不是因为传递进去的引用就指向了另外一个对象。
 
-```cpp
+{% highlight cpp %}
 void changeString(std::string& s) {
 	std::cout << "旧string：" << &s << std::endl;
 	std::string sp = "是call-by-reference";
@@ -47,7 +47,7 @@ int main() {
 	std::cout << "完结string：" << &s << std::endl;
 	return 0;
 }
-```
+{% endhighlight %}
 
 结果是这样的：
 
