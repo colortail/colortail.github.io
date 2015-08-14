@@ -61,12 +61,15 @@ public void foo(final Type argu) {
 {% endhighlight %}
 
 ------
-####更正
+
+
+###更正
 
 {% highlight c %}
 void foo(const Type argu);
 void foo(Type const argu);
 {% endhighlight %}
+
 这两没区别。首先这里不该直接传递对象，应该是传递Type & argu。
 
 那const Type & argu和**Type cosnt & argu**是没区别的，当时之所以提出这个问题，就是看到后面一种情况不太理解，其实两个并没有区别。
