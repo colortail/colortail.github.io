@@ -4,6 +4,7 @@ title: 传值和传引用
 categories: grammer
 ---
 Effective C++ 3th的条款20指出
+
 > Prefer pass-by-reference to const to pass-by-value
 
 读到这里会觉得Java在设计时把pass-by-value去掉了，剩下了the part of most effective。
