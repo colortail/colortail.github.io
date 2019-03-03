@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
 
   
@@ -24,13 +24,13 @@
     <link rel="icon" href="/favicon.png">
   
   
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
   
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body>
-  <div id="container">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
     <div id="wrap">
       <header id="header">
   <div id="banner"></div>
@@ -58,7 +58,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://colortail.github.io"></form>
@@ -68,6 +68,99 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-common-loss" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/03/common-loss/" class="article-date">
+  <time datetime="2019-03-03T05:59:55.000Z" itemprop="datePublished">2019-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/03/common-loss/">common loss</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="common-loss-dayede"><a href="#common-loss-dayede" class="headerlink" title="common loss dayede"></a>common loss dayede</h3><h3 id="regression"><a href="#regression" class="headerlink" title="regression"></a>regression</h3><p><strong>MSE</strong>： mean square error</p>
+<p>mse = $\frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2$</p>
+<p><strong>MAE</strong>: mean absolute error</p>
+<p>mae = $\frac{1}{m} \sum_i^n|y_i - \hat{y_i}|$</p>
+<p><strong>RMSE</strong>: root mean</p>
+<p>mse = $\sqrt{ \frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2}$</p>
+<p>mse和rmse被称为regression L2 loss， mae是L1 loss</p>
+<p><strong>possion loss</strong></p>
+<p>泊松回归假设：1）y服从泊松分布，2）y的期望的对数可以通过线性组合来建模,也就是 $E(y) = e^{w^Tx}$</p>
+<p>根据假设得: $P(y|x;w)=\frac{e^{yw^Tx}e^{-e^{w^Tx}}}{y!}$,然后最大似然估计后得到</p>
+<p>损失函数：$L_{possion_reg}=\sum_i^n{y_i*w^Tx_i - e^{w^Tx_i}}$</p>
+<p>可以用于拟合计数问题</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/03/03/common-loss/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://colortail.github.io/2019/03/03/common-loss/" data-id="cjssicpxr0000i7ylmld88495" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-data-analysis-tool-in-python" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/21/data-analysis-tool-in-python/" class="article-date">
+  <time datetime="2018-07-21T04:09:16.000Z" itemprop="datePublished">2018-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/21/data-analysis-tool-in-python/">data-analysis-tool-in-python</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Data-analysis-tool-in-python"><a href="#Data-analysis-tool-in-python" class="headerlink" title="Data analysis tool in python"></a>Data analysis tool in python</h2><h3 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h3><ol>
+<li></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://colortail.github.io/2018/07/21/data-analysis-tool-in-python/" data-id="cjssicpxz0001i7ylr3l09a1p" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python-numpy-pandas/">python,numpy,pandas</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-a-scala-tutorial-for-java-programmers" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -218,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://colortail.github.io/2017/12/10/a-scala-tutorial-for-java-programmers/" data-id="cjjuw6j1x0000z274f8l06fz5" class="article-share-link">Share</a>
+      <a data-url="http://colortail.github.io/2017/12/10/a-scala-tutorial-for-java-programmers/" data-id="cjssicpyq0006i7yl527vnjxe" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lang-translation/">lang,translation</a></li></ul>
@@ -256,7 +349,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://colortail.github.io/2017/12/10/hive-start/" data-id="cjjuw6j2c0003z2744tv1eeeo" class="article-share-link">Share</a>
+      <a data-url="http://colortail.github.io/2017/12/10/hive-start/" data-id="cjssicpyn0005i7yl67bwm8rp" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -300,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://colortail.github.io/2017/12/02/cache-aware/" data-id="cjjuw6j240001z274sh52pd71" class="article-share-link">Share</a>
+      <a data-url="http://colortail.github.io/2017/12/02/cache-aware/" data-id="cjssicpy90002i7ylhuwist1f" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -323,7 +416,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/lang-translation/">lang,translation</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/lang-translation/">lang,translation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-numpy-pandas/">python,numpy,pandas</a></li></ul>
     </div>
   </div>
 
@@ -333,16 +426,16 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/lang-translation/" style="font-size: 10px;">lang,translation</a>
+      <a href="/tags/lang-translation/" style="font-size: 10px;">lang,translation</a> <a href="/tags/python-numpy-pandas/" style="font-size: 10px;">python,numpy,pandas</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li></ul>
     </div>
   </div>
 
@@ -350,9 +443,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/03/03/common-loss/">common loss</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/21/data-analysis-tool-in-python/">data-analysis-tool-in-python</a>
+          </li>
         
           <li>
             <a href="/2017/12/10/a-scala-tutorial-for-java-programmers/">a-scala-tutorial-for-java-programmers</a>
@@ -378,7 +479,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 tangefan<br>
+      &copy; 2019 tangefan<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
@@ -393,7 +494,7 @@
 </nav>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="//libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -405,5 +506,20 @@
 
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>

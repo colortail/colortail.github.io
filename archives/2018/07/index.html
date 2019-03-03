@@ -5,19 +5,18 @@
   
 
   
-  <title>cache-aware | Train Test</title>
+  <title>Archiv: 2018/7 | Train Test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="cache aware算法用于避免cache misses，更有效的利用缓存。cache aware算法显式利用CPU的cache行为，会考虑和CPU关系更密切的底层机制。cache oblivious也会更好的利用缓存，但代码不是那么底层。典型的例子，二维数组按行遍历和按列遍历。 写缓存策略:  nowrite： 不">
-<meta property="og:type" content="article">
-<meta property="og:title" content="cache-aware">
-<meta property="og:url" content="http://colortail.github.io/2017/12/02/cache-aware/index.html">
+  <meta name="description" content="Language, Database, Operating System, Network, Compiler">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Train Test">
+<meta property="og:url" content="http://colortail.github.io/archives/2018/07/index.html">
 <meta property="og:site_name" content="Train Test">
-<meta property="og:description" content="cache aware算法用于避免cache misses，更有效的利用缓存。cache aware算法显式利用CPU的cache行为，会考虑和CPU关系更密切的底层机制。cache oblivious也会更好的利用缓存，但代码不是那么底层。典型的例子，二维数组按行遍历和按列遍历。 写缓存策略:  nowrite： 不缓存任何写操作，当进行写时，跳过缓存，直接写入磁盘，并且标记缓存失效。 writ">
+<meta property="og:description" content="Language, Database, Operating System, Network, Compiler">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2017-12-10T17:06:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cache-aware">
-<meta name="twitter:description" content="cache aware算法用于避免cache misses，更有效的利用缓存。cache aware算法显式利用CPU的cache行为，会考虑和CPU关系更密切的底层机制。cache oblivious也会更好的利用缓存，但代码不是那么底层。典型的例子，二维数组按行遍历和按列遍历。 写缓存策略:  nowrite： 不缓存任何写操作，当进行写时，跳过缓存，直接写入磁盘，并且标记缓存失效。 writ">
+<meta name="twitter:title" content="Train Test">
+<meta name="twitter:description" content="Language, Database, Operating System, Network, Compiler">
   
     <link rel="alternate" href="/atom.xml" title="Train Test" type="application/atom+xml">
   
@@ -68,63 +67,40 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-cache-aware" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/02/cache-aware/" class="article-date">
-  <time datetime="2017-12-02T09:25:20.000Z" itemprop="datePublished">2017-12-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      cache-aware
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2018/07/21/data-analysis-tool-in-python/" class="archive-article-date">
+  <time datetime="2018-07-21T04:09:16.000Z" itemprop="datePublished">7月 21</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/07/21/data-analysis-tool-in-python/">data-analysis-tool-in-python</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>cache aware算法用于避免cache misses，更有效的利用缓存。<br>cache aware算法显式利用CPU的cache行为，会考虑和CPU关系更密切的底层机制。<br>cache oblivious也会更好的利用缓存，但代码不是那么底层。<br>典型的例子，二维数组按行遍历和按列遍历。</p>
-<p>写缓存策略:</p>
-<ul>
-<li>nowrite： 不缓存任何写操作，当进行写时，跳过缓存，直接写入磁盘，并且标记缓存失效。</li>
-<li>write-through cache： 写操作更新缓存，同时更新磁盘，但是不标记缓存为失效。</li>
-<li>write-back： 写操作写入缓存，但是不直接更新到磁盘，而是酱缓存页面标记为脏，并加入到脏页列表中。然后回写进程将脏页列表中的页写回到磁盘，最后清理脏标记。</li>
-</ul>
-<p>缓存一致性：<br>所有写内存的操作在共享总线上进行，所以各缓存都可以snooping到，由于一个时钟周期只有一个缓存可以读写内存，所以当某个处理器写内存时，其他处理器就可以使其对应的缓存失效。<br>若在混写模式，写缓存不一定马上写内存，这时需要使用MESI（Modified，Exclusive，Shared，Invalid）协议。处理器修改缓存前需要独占该缓存，其他处理器的该缓存副本失效。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://colortail.github.io/2017/12/02/cache-aware/" data-id="cjssicpy90002i7ylhuwist1f" class="article-share-link">Teilen</a>
-      
-      
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2017/12/10/hive-start/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          hive-start
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
 
 </section>
         

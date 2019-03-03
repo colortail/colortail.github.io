@@ -5,19 +5,19 @@
   
 
   
-  <title>cache-aware | Train Test</title>
+  <title>common loss | Train Test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="cache aware算法用于避免cache misses，更有效的利用缓存。cache aware算法显式利用CPU的cache行为，会考虑和CPU关系更密切的底层机制。cache oblivious也会更好的利用缓存，但代码不是那么底层。典型的例子，二维数组按行遍历和按列遍历。 写缓存策略:  nowrite： 不">
+  <meta name="description" content="common loss dayederegressionMSE： mean square error mse = $\frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2$ MAE: mean absolute error mae = $\frac{1}{m} \sum_i^n|y_i - \h">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cache-aware">
-<meta property="og:url" content="http://colortail.github.io/2017/12/02/cache-aware/index.html">
+<meta property="og:title" content="common loss">
+<meta property="og:url" content="http://colortail.github.io/2019/03/03/common-loss/index.html">
 <meta property="og:site_name" content="Train Test">
-<meta property="og:description" content="cache aware算法用于避免cache misses，更有效的利用缓存。cache aware算法显式利用CPU的cache行为，会考虑和CPU关系更密切的底层机制。cache oblivious也会更好的利用缓存，但代码不是那么底层。典型的例子，二维数组按行遍历和按列遍历。 写缓存策略:  nowrite： 不缓存任何写操作，当进行写时，跳过缓存，直接写入磁盘，并且标记缓存失效。 writ">
+<meta property="og:description" content="common loss dayederegressionMSE： mean square error mse = $\frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2$ MAE: mean absolute error mae = $\frac{1}{m} \sum_i^n|y_i - \hat{y_i}|$ RMSE: root mean mse = $\sqrt{">
 <meta property="og:locale" content="zh_cn">
-<meta property="og:updated_time" content="2017-12-10T17:06:04.000Z">
+<meta property="og:updated_time" content="2019-03-03T13:01:32.787Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cache-aware">
-<meta name="twitter:description" content="cache aware算法用于避免cache misses，更有效的利用缓存。cache aware算法显式利用CPU的cache行为，会考虑和CPU关系更密切的底层机制。cache oblivious也会更好的利用缓存，但代码不是那么底层。典型的例子，二维数组按行遍历和按列遍历。 写缓存策略:  nowrite： 不缓存任何写操作，当进行写时，跳过缓存，直接写入磁盘，并且标记缓存失效。 writ">
+<meta name="twitter:title" content="common loss">
+<meta name="twitter:description" content="common loss dayederegressionMSE： mean square error mse = $\frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2$ MAE: mean absolute error mae = $\frac{1}{m} \sum_i^n|y_i - \hat{y_i}|$ RMSE: root mean mse = $\sqrt{">
   
     <link rel="alternate" href="/atom.xml" title="Train Test" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-cache-aware" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-common-loss" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/02/cache-aware/" class="article-date">
-  <time datetime="2017-12-02T09:25:20.000Z" itemprop="datePublished">2017-12-02</time>
+    <a href="/2019/03/03/common-loss/" class="article-date">
+  <time datetime="2019-03-03T05:59:55.000Z" itemprop="datePublished">2019-03-03</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      cache-aware
+      common loss
     </h1>
   
 
@@ -90,19 +90,77 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>cache aware算法用于避免cache misses，更有效的利用缓存。<br>cache aware算法显式利用CPU的cache行为，会考虑和CPU关系更密切的底层机制。<br>cache oblivious也会更好的利用缓存，但代码不是那么底层。<br>典型的例子，二维数组按行遍历和按列遍历。</p>
-<p>写缓存策略:</p>
+        <h3 id="common-loss-dayede"><a href="#common-loss-dayede" class="headerlink" title="common loss dayede"></a>common loss dayede</h3><h3 id="regression"><a href="#regression" class="headerlink" title="regression"></a>regression</h3><p><strong>MSE</strong>： mean square error</p>
+<p>mse = $\frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2$</p>
+<p><strong>MAE</strong>: mean absolute error</p>
+<p>mae = $\frac{1}{m} \sum_i^n|y_i - \hat{y_i}|$</p>
+<p><strong>RMSE</strong>: root mean</p>
+<p>mse = $\sqrt{ \frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2}$</p>
+<p>mse和rmse被称为regression L2 loss， mae是L1 loss</p>
+<p><strong>possion loss</strong></p>
+<p>泊松回归假设：1）y服从泊松分布，2）y的期望的对数可以通过线性组合来建模,也就是 $E(y) = e^{w^Tx}$</p>
+<p>根据假设得: $P(y|x;w)=\frac{e^{yw^Tx}e^{-e^{w^Tx}}}{y!}$,然后最大似然估计后得到</p>
+<p>损失函数：$L_{possion_reg}=\sum_i^n{y_i*w^Tx_i - e^{w^Tx_i}}$</p>
+<p>可以用于拟合计数问题</p>
+<a id="more"></a>
+<p><strong>quantile</strong></p>
+<p>要估计y的$\tau$分位数$\xi$</p>
+<p>定义损失函数：</p>
+<p>$\rho(y_i - \xi) = (y_i - \xi) (\tau - I_{(y_i&lt;\xi)})$</p>
+<p>这个损失函数可以表述为另一种形式：</p>
+<p>$\rho(y_i - \xi) =   (\tau - 1)(y_i - \xi)^+   + \tau(\xi - y_i )^+ $</p>
+<p>也就是说，如果</p>
+<h3 id="classification"><a href="#classification" class="headerlink" title="classification"></a>classification</h3><p><strong>confusion matrix</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>prediction</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>real</strong></td>
+<td></td>
+<td>Positive</td>
+<td>Negative</td>
+</tr>
+<tr>
+<td></td>
+<td>Positive</td>
+<td>True Positive</td>
+<td>False Negative</td>
+</tr>
+<tr>
+<td></td>
+<td>Negative</td>
+<td>False Positive</td>
+<td>True Negative</td>
+</tr>
+</tbody>
+</table>
+</div>
 <ul>
-<li>nowrite： 不缓存任何写操作，当进行写时，跳过缓存，直接写入磁盘，并且标记缓存失效。</li>
-<li>write-through cache： 写操作更新缓存，同时更新磁盘，但是不标记缓存为失效。</li>
-<li>write-back： 写操作写入缓存，但是不直接更新到磁盘，而是酱缓存页面标记为脏，并加入到脏页列表中。然后回写进程将脏页列表中的页写回到磁盘，最后清理脏标记。</li>
+<li>混淆矩阵，True/False表示是否分类正确，Positive/Negative指示出<strong>预测</strong>的结果</li>
+<li>accuracy: $\frac{TP + TN} {TP + FN + FP + TN}$</li>
+<li>precision:  $\frac{TP}{TP + FP}$, 预测的正例中正确分类的比例</li>
+<li>recall：$\frac{TP}{TP + FN}$，将实际正例区分出来的比例</li>
+<li>F1-score:  <script type="math/tex">\frac{1}{f1\_score} = \frac{1}{precision} + \frac{1}{recall}</script></li>
 </ul>
-<p>缓存一致性：<br>所有写内存的操作在共享总线上进行，所以各缓存都可以snooping到，由于一个时钟周期只有一个缓存可以读写内存，所以当某个处理器写内存时，其他处理器就可以使其对应的缓存失效。<br>若在混写模式，写缓存不一定马上写内存，这时需要使用MESI（Modified，Exclusive，Shared，Invalid）协议。处理器修改缓存前需要独占该缓存，其他处理器的该缓存副本失效。</p>
-
+<p><strong>ROC</strong>: receiver operating characteristic</p>
+<p>TPR = $\frac{TP}{TP + FN}$ ，真正率：预测正例正确的占总正的比例</p>
+<p>FPR = $\frac{FP}{FP + TN}$，假正率：预测正例错误（实际为负）的占总负例的比例</p>
+<p>ROC的X轴是FPR，Y轴是TPR。AUC为ROC曲线面积。</p>
+<p>ROC曲线均在左上角，AUC越大越准确。</p>
+<p><strong>0-1 loss </strong></p>
+<script type="math/tex; mode=display">L(\hat{y}, y) = I(\hat{y} \neq y)</script>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://colortail.github.io/2017/12/02/cache-aware/" data-id="cjssicpy90002i7ylhuwist1f" class="article-share-link">Teilen</a>
+      <a data-url="http://colortail.github.io/2019/03/03/common-loss/" data-id="cjssicpxr0000i7ylmld88495" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -111,15 +169,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/12/10/hive-start/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          hive-start
-        
-      </div>
-    </a>
   
+    <a href="/2018/07/21/data-analysis-tool-in-python/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">data-analysis-tool-in-python</div>
+    </a>
   
 </nav>
 
