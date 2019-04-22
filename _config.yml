@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Train Test
+title: colortail corpus
 subtitle: Learning how to build Computer System
-description: Language, Database, Operating System, Network, Compiler
-author: tangefan
-language: zh_cn
+description: Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research
+author: colortail
+language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
@@ -16,6 +16,7 @@ url: http://colortail.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
+  lang: en
 
 # Directory
 source_dir: source
@@ -30,7 +31,7 @@ skip_render:
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
-titlecase: false # Transform title into titlecase
+titlecase: true # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
@@ -79,7 +80,7 @@ theme: landscape
 deploy:
   type: git
   repo: http://github.com/colortail/colortail.github.io.git
-  baranch: master 
+  branch: master
 
 # MathJax Support
 mathjax:

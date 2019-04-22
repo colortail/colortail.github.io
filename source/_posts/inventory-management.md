@@ -1,5 +1,5 @@
 ---
-title: inventory_management
+title: 库存管理
 date: 2019-04-10 21:49:50
 tags: 运筹优化
 ---

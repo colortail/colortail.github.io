@@ -1,10 +1,9 @@
 ---
-title: common loss
+title: 常见损失函数
 date: 2019-03-03 13:59:55
 tags: 机器学习
 mathjax: true
 ---
-### common loss dayede
 ### regression
 
 **MSE**： mean square error
