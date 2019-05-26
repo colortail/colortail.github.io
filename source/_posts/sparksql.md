@@ -1,7 +1,7 @@
 ---
 title: sparksql
 date: 2019-04-10 22:02:33
-tags: spark
+tags: distributed system
 ---
 ## SparkSQL 逻辑计划
 ## SparkSQL 物理计划
