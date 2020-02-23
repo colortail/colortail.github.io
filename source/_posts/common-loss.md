@@ -1,7 +1,7 @@
 ---
 title: 常见损失函数
 date: 2019-03-03 13:59:55
-tags: 机器学习
+tags: machine learning
 mathjax: true
 ---
 ### regression
@@ -28,11 +28,11 @@ mse和rmse被称为regression L2 loss， mae是L1 loss
 
 **possion loss**
 
-泊松回归假设：1）y服从泊松分布，即期望为参数$\lambda$,且P(y=k)=$e^{-\lambda}\lambda^k / k!$，2）y的期望的对数可以通过线性组合来建模,也就是 $E(y) = e^{w^Tx}$
+泊松回归假设：1）y服从泊松分布，即期望为参数$\lambda$,且P(y=k)= $ e^{-\lambda}\lambda^k / k! $ ，2）y的期望的对数可以通过线性组合来建模,也就是 $ E(y) = e^{w^Tx} $
 
-根据假设得: $P(y|x;w)=\frac{e^{yw^Tx}e^{-e^{w^Tx}}}{y!}​$,然后最大似然估计后得到
+根据假设得: $ P(y|x;w)=\frac{e^{yw^Tx}e^{-e^{w^Tx}}}{y!} $,然后最大似然估计后得到
 
-损失函数：$L_{possion\_reg}=\sum_i^n{y_i*w^Tx_i - e^{w^Tx_i}}​$
+损失函数：$ L_{possion\_reg}=\sum_i^n{y_i*w^Tx_i - e^{w^Tx_i}}  $
 
 可以用于拟合计数问题，其他的广义线性模型会假设y服从其他的分布。
 
@@ -83,7 +83,7 @@ ROC曲线均在左上角，AUC越大越准确。
 
 
 
-**0-1 loss **
+** 0-1 loss **
 
 $$ L(\hat{y}, y) = I(\hat{y} \neq y) $$
 

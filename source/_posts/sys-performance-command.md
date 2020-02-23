@@ -1,7 +1,7 @@
 ---
 title: 查看系统性能的命令
 date: 2019-04-21 13:43:39
-tags: operation system
+tags: operating system
 ---
 - 查看cpu信息
 cat /proc/cpuinfo

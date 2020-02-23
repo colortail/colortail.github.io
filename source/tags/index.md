@@ -1,0 +1,8 @@
+- [程序设计](programming)
+- [操作系统](operating-system)
+- [分布式系统](distributed-system)
+- [运筹优化](optimization)
+- [统计](statistic)
+- [机器学习](machine-learning)
+- [深度学习](deep-learning)
+- [翻译](translation)

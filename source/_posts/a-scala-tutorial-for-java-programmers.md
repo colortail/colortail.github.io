@@ -1,7 +1,7 @@
 ---
 title: a-scala-tutorial-for-java-programmers
 date: 2017-12-10 13:25:42
-tags: lang,translation
+tags: translation
 ---
 # [译]为Java程序员而做的Scala教程
 

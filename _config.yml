@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: colortail corpus
+title: 高登 - colortail
 subtitle: Learning how to build Computer System
 description: Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research
 author: colortail
@@ -16,7 +16,9 @@ url: http://colortail.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
-  lang: en
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
@@ -42,7 +44,9 @@ highlight:
   enable: true
   line_number: true
   auto_detect: false
-  tab_replace:
+  tab_replace: ''
+  wrap: true
+  hljs: false
   
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
@@ -56,7 +60,7 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
-tag_map:
+tag_map: Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -73,7 +77,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+# theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -86,5 +91,24 @@ deploy:
 mathjax:
   enable: true
   per_page: true
-  #cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
   cdn: //cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+    - markdown-it-abbr
+    - markdown-it-footnote
+    - markdown-it-ins
+    - markdown-it-sub
+    - markdown-it-sup
+  anchors:
+    level: 2
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor

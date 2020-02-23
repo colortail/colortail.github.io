@@ -1,7 +1,7 @@
 ---
-title: cache-aware
+title: Cache Aware
 date: 2017-12-02 17:25:20
-tags: 
+tags: operating system
 ---
 
 cache aware算法用于避免cache misses，更有效的利用缓存。

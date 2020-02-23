@@ -1,7 +1,7 @@
 ---
 title: 处理类别特征
 date: 2019-04-22 23:28:34
-tags: 机器学习
+tags: machine learning
 mathjax: true
 ---
 

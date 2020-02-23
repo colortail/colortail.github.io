@@ -1,7 +1,8 @@
 ---
 title: 深度学习系统知识结构
 date: 2019-05-08 21:08:07
-tags: 深度学习, system
+tags: deep learning
+mathjax: true
 ---
 
 1. 常见的深度学习模型
