@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"colortail.github.io","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+<meta property="og:type" content="website">
+<meta property="og:title" content="高登 - colortail">
+<meta property="og:url" content="http://colortail.github.io/index.html">
+<meta property="og:site_name" content="高登 - colortail">
+<meta property="og:description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高登 - colortail">
+<meta name="twitter:description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+
+<link rel="canonical" href="http://colortail.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>高登 - colortail</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">高登 - colortail</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Learning how to build Computer System</p>
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2020/02/23/dynamic-programming/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/23/dynamic-programming/" class="post-title-link" itemprop="url">动态规划实例</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-23 16:40:40 / 修改时间：16:43:52" itemprop="dateCreated datePublished" datetime="2020-02-23T16:40:40+08:00">2020-02-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h4><hr>
+<pre><code>n个物品，各自重为w_i，价值为v_i，约束为W
+则构造 n * W的表格, j表示重量在j以下，表格值为，在j以下最大的价值
+</code></pre><hr>
+<p>递推关系为：<br>    j &lt; w[i]：a[i + 1][j] = a[i][j]，因为拿不了任何东西<br>    w[i] &lt;= j: a[i + 1][j] = max(a[i][j - w[i]] + v[i], a[i][j])，可拿或不拿<br>    注：a[0][j] = 0</p>
+<h4 id="LCS"><a href="#LCS" class="headerlink" title="LCS"></a>LCS</h4><hr>
+<pre><code>两个字符串s,t，其最长字串构造len(s + 1) * len(t + 1)的表格
+</code></pre><hr>
+<p>递推关系为：<br>s[i] == t[j]: a[i][j] = a[i-1][j-1] + 1<br>s[i] != t[j]: a[i][j] = max(a[i][j-1], a[i-1][j])</p>
+<h4 id="LIS"><a href="#LIS" class="headerlink" title="LIS"></a>LIS</h4><hr>
+<pre><code>一个字符串的最长上升子序列，构造一个n的向量
+</code></pre><hr>
+<p>对每一个i，计算 j = [0, i）<br>递推关系为：<br>a[j] &lt; a[i]: a[i] = max(a[i], a[j] + 1)<br>注意：对每个i循环前，需要初始化为1</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2020/02/23/market-modeling/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/23/market-modeling/" class="post-title-link" itemprop="url">营销建模</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-23 16:40:26 / 修改时间：17:19:59" itemprop="dateCreated datePublished" datetime="2020-02-23T16:40:26+08:00">2020-02-23</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="营销模型"><a href="#营销模型" class="headerlink" title="营销模型"></a>营销模型</h3><ul>
+<li>客户存留</li>
+<li>客户分析</li>
+<li>市场营销理论<br>STP: 市场细分Segementation，目标市场 Targeting，市场定位 Positioning<br>用户寻找细分市场，明确细分市场的目标客户及其需求，然后作出产品定位。</li>
+<li>4P：Product，Price， Place渠道，Promotion</li>
+<li>4C：Customer, Cost, Convenience,Communication</li>
+<li>4R: Relevance, Reaction, Relationship, Reward<br>Relevance: 把企业和顾客关联起来<br>Reaction：客户的沟通反馈，企业的模式变革<br>Relationship：考虑长期利益，比如，会员营销，补贴，留言，拜访等<br>Reward：提供平台，合作</li>
+</ul>
+<h3 id="营销工具：文案，渠道，用户调查，数据分析"><a href="#营销工具：文案，渠道，用户调查，数据分析" class="headerlink" title="营销工具：文案，渠道，用户调查，数据分析"></a>营销工具：文案，渠道，用户调查，数据分析</h3><p>邮件营销平台，模版， 内容展示<br>调查表<br>社群：众筹，打赏，短信等<br>访问次数，流量类型，停留时间。</p>
+<h3 id="营销优化"><a href="#营销优化" class="headerlink" title="营销优化"></a>营销优化</h3><p>营销优化的工作：根据用户的偏好、购买倾向、利润贡献度、营销成本、接触策略和其他沟通目标，从而实现利润、营销响应率、资产水平等业务目标的最大化。<br>可用方式：市场细分、预测模型和营销测试等<br>约束条件：渠道容量，预算控制，接触策略的上限</p>
+<p>参考：<br><a href="https://www.sas.com/content/dam/SAS/zh_cn/doc/factsheet/sas-marketing-optimization.pdf" target="_blank" rel="noopener">SAS营销优化</a><br><a href="https://www.infoq.cn/article/CgTt_RkFmT8ADXXaCOE1" target="_blank" rel="noopener">金融智能营销中的建模与策略优化</a></p>
+<h4 id="营销优化模型：One-to-One"><a href="#营销优化模型：One-to-One" class="headerlink" title="营销优化模型：One to One"></a>营销优化模型：One to One</h4><p>建立了以最大利润、最小成本和最大客户数为营销目的，以最大成本限制，产品库存量约束，推销渠道约束，客户能接收最大Offer数约束，订单约束和单一Offer约束为营销约束的One to One营销优化模型。</p>
+<h3 id="留存分析"><a href="#留存分析" class="headerlink" title="留存分析"></a>留存分析</h3><p>在一段时间内，对某个网站 / App 等有过任意行为的用户，称之为这个网站 / App 这段时间的活跃用户，日活：DAU。那些留下来的人或者是经常回访我们公司网站 / App 的人就称为留存。</p>
+<ul>
+<li>留存率=（（CE-CN）/ CS））100。CE =期末客户数，CN =期内新客户数，CS =初期客户数<br>贝恩公司的研究显示也表明，客户留存率增加5％，企业利润可以增加25％ - 95％，对应将现有客户转换为重复客户的可能性为60 ％ - 70％。</li>
+<li>NDAU/DAU，考虑新老用户比例</li>
+<li>留存率曲线</li>
+</ul>
+<h4 id="其他分析类型："><a href="#其他分析类型：" class="headerlink" title="其他分析类型："></a>其他分析类型：</h4><ul>
+<li>事件分析：用户注册、浏览商品、添加购物车、支付订单</li>
+<li>漏斗分析：用于分析多个步骤过程中，每一步的转化和流失</li>
+<li>分布分析</li>
+<li>归因分析：分析对某个广告位，推广位的转化率贡献</li>
+<li>用户路径分析</li>
+<li>用户分群<h4 id="客户分析"><a href="#客户分析" class="headerlink" title="客户分析"></a>客户分析</h4></li>
+<li>RFM模型：用户评估客户价值，其他类似的还有CLV，违约率，流失率等。<br>最近一次消费频率 Recency， 消费频率 Frequency，消费金额</li>
+<li>客户画像<br>生命周期：stranger，vistor，leads，customer，member，advocate<br>数据来源：人口属性，社会属性，行为习惯，兴趣偏好和心理属性<br>用户关联：账号，行为模式关联</li>
+</ul>
+<h4 id="分析算法：分类，聚类，主题模型，矩阵分解"><a href="#分析算法：分类，聚类，主题模型，矩阵分解" class="headerlink" title="分析算法：分类，聚类，主题模型，矩阵分解"></a>分析算法：分类，聚类，主题模型，矩阵分解</h4>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2019/05/08/spark-tuning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/08/spark-tuning/" class="post-title-link" itemprop="url">Spark并行化基本分析</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-08 23:18:28" itemprop="dateCreated datePublished" datetime="2019-05-08T23:18:28+08:00">2019-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 17:20:11" itemprop="dateModified" datetime="2020-02-23T17:20:11+08:00">2020-02-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="shuffle"><a href="#shuffle" class="headerlink" title="shuffle"></a>shuffle</h4><p>在有宽依赖（一个父节点的数据会被多个子节点用到）的时候会发生shuffle。在MR里，shuffle连接了map和reduce，它本身的实现在不断优化，所以在spark里，弱化了map和reduce的细节，把shuffle的概念提高了。</p>
+<p>简单实现的情况，因为map任务和reduce任务里数据的存储方式是不清楚的，map会生成数量等于reduce任务个数的文件，每个reduce会从上游<strong>所有</strong>的节点去取数据。但这其实有优化空间，比如相同key的数据已经在一个机器上了呢？是不需要从所有节点拉数据的。</p>
+<p>从另一个方面，简单理解，若数据分组key改变了，就会完全shuffle：如果下一个分组的方式和上一个分组的方式没有关系，会导致完全shuffle发生。</p>
+<h4 id="partition是数据的逻辑映射"><a href="#partition是数据的逻辑映射" class="headerlink" title="partition是数据的逻辑映射"></a>partition是数据的逻辑映射</h4><p>Spark和MR在容错上不一样，Spark不用在HDFS上多副本，如果一个节点出错了，理论上就重新从父RDD计算出来。</p>
+<p>partition是逻辑概念，partition和任务相关，用于计算。在数据层面，文件块是block的概念，但block是专门的StoreManager去管理。虽然不是一回事，但总之是有对应关系的。</p>
+<p>在缩小一个rdd的partition时，是会发生shuffle的，只是不是完全shuffle。</p>
+<h4 id="算子和MR"><a href="#算子和MR" class="headerlink" title="算子和MR"></a>算子和MR</h4><ul>
+<li><p>Spark的算子是要对应上MR的，对于满足交换律和结合律操作，可以用类似combiner的处理，在mapper节点完成。</p>
+<p>以关系代数的为例：</p>
+<p>| 操作  | map              | reduce |<br>| ——- | ————————| ——— |<br>| where | t若满足条件才输出(t,t) |        |<br>| select | t选择对应列,(t’, t’) |        |<br>| select distinct | t选择对应列(t’, t’) | (t’, [t’,t’…])去重 (t’, t’) |<br>| union all | t直接输出(t,t) |  |<br>| union |  t直接输出(t,t) |   (t, [t,t…])输出 (t, t)    |<br>| intersection | t 输出 (t,t) | 满足(t, [t,t]) 才输出 |<br>| difference | t 输出 (t, x)或(t, y) | 满足(t, [x]) 才输出 |<br>| join | (a,b)和(b,c) 输出 (b, (a, x))或(b, (c,y)) | (b,[(a,x),(c,y),(d,x),(e,y)…])将x的和y的分开，然后两边做笛卡尔积，输出[（a,b,c）,(a,b,e), (d,b,c),(d,b,e)…] |<br>| groupby | 按key t输出 (t, a)，(t, b)… |  |</p>
+</li>
+</ul>
+<h4 id="并行度"><a href="#并行度" class="headerlink" title="并行度"></a>并行度</h4><p>partition是计算的逻辑单位，应该有多少paritition就有多少task，就能有多大的并行。默认情况，map的并行就是输入的partition数量，这个和文件大小有关，reduce的并行是父rdd的最大partition个数。</p>
+<p>每次做map操作，分区信息都会丢失，所以map类操作提供了preservedPartition来保留分区。这也是为什么对pair rdd更推荐用mapValues，因为它保留了分区，filter也是一个保留了分区的算子。</p>
+<p>spark.default.parallelism：这个参数适用于RDD，设置了任务的并行度，对于map和reduce的task都有用。</p>
+<p>spark.sql.shuffle.partitions：这参数针对dataframe的。shuffle的个数其实反应的也是reduce的个数，如果shuffle partition多了，那reduce的并行度就会高。</p>
+<h4 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h4><p>FAIR调度：比较TaskSetManager（一个stage中所有的task）中runningTasks和其minShare值，优先执行runningTasks比较少的，使得资源不被长时间的任务占据了。</p>
+<p>本地化调度：采用延迟调度算法，先判别task的locality，看executor是否满足（任务的可容忍的延迟），不满足则逐步退化。</p>
+<h4 id="动态资源申请"><a href="#动态资源申请" class="headerlink" title="动态资源申请"></a>动态资源申请</h4><p>同时开启：spark.dynamicAllocation.enabled和ShuffleService，可以不用配置executor-num</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2019/05/08/deep-learning-system-schedule/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/05/08/deep-learning-system-schedule/" class="post-title-link" itemprop="url">深度学习系统知识结构</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-08 21:08:07" itemprop="dateCreated datePublished" datetime="2019-05-08T21:08:07+08:00">2019-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 17:19:54" itemprop="dateModified" datetime="2020-02-23T17:19:54+08:00">2020-02-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li><p>常见的深度学习模型</p>
+<p>1.1 CNN，用于图像处理，网络有三个基本层：</p>
+<p>convolutional layer：包括用卷积核的计算,然后用激活函数（如Relu）计算</p>
+<p>pooling layer：滑动窗口来降采样，MaxPooling取窗口最大值，AveragePooling取窗口内数据的平均值。然后再补0，保证图片一样大小。</p>
+<p>Flatten layer：用来叠加多种卷积核计算的结果，最终结果接到全连接层上，用softmax做多目标分类。</p>
+</li>
+</ol>
+<p>   1.2 GAN，生成对抗网络，用于真实数据分布的生成，比如图像，视频。</p>
+<p>   模型包括一个生成模型和判别模型，生成关于真实数据的分布。判别模型会最大化自己的准确度，而生成模型会最小化判别模型的准确度。两者交替优化。</p>
+<p>   1.3 RNN/LSTM，RNN具有反馈结构，用来处理序列类的问题，如语音等。</p>
+<p>   1.4 BERT，用于处理NLP中机器理解，翻译类的问题。用无监督的方法训练transformer模型。是一个深且窄的模型。会同时利用左侧和右侧的词语，被称作Masked（遮挡）语言模型。训练参数比transformer要少，不需要海量的语料。</p>
+<p>   1.5 Transformer，也是NLP上处理翻译问题的。Seq2Seq结合了Attention和RNN，Transformer就是全Attention，和Seq2Seq一样，包括Encoder和Decoder。Attention就是在decoding阶段对input的信息赋予了不同的权重。</p>
+<ol>
+<li>后向传播算法（BP），矩阵求导，常见算子的梯度推导（矩阵乘，卷积，池化，Relu），batch normalization</li>
+</ol>
+<ol>
+<li>autograd的基本原理。是pytorch里用来计算梯度的</li>
+</ol>
+<ol>
+<li><p>cuda编程，cuda高阶用法</p>
+<p>stream指按照host调用的顺序执行的一堆异步的操作，event用来标记stream执行的特定的点，用于同步和操控运行步调。</p>
+<p>异步/同步指的是host提交任务到device后，host是阻塞还是继续执行。kernel函数总是异步，cudaMemcpy总是同步。优化常见cuda kernel：element-wise product 元素积，reduce，broadcast，MatMul， conv，pooling</p>
+</li>
+</ol>
+<ol>
+<li>C++，Python。设计模式，惯用法，模版；vim，gdb调试</li>
+</ol>
+<ol>
+<li><p>socket，RDMA编程（Remote Direct Memory Access）是专门的网卡和InfiniBand使用的。</p>
+<p>常见collective operation代价分析：ring allreduce：对于某一块数据，先scatter reduce让一个gpu上有全部的数据，再做all-gather传递这个全部的数据。tree all reduce代价分析（都在gpu上）</p>
+<p>collective operation是指数据被同时发送到多个节点，或者从多个节点接收。包括：gather：从所有节点收集数据，scatter：其中一组数据被分解成片段，并且不同的片段被发送到所有的节点，broadcast：相同数据被发送到所有节点。</p>
+</li>
+</ol>
+<ol>
+<li>多线程编程，熟悉锁，条件变量，内核线程，用户级线程，对actor，CSP（Goroutine + Channel）各种技术熟悉。</li>
+</ol>
+<ol>
+<li>熟悉编译器的基本原理，dataflow分析，多重循环程序优化技巧，典型的是polyhedral模型</li>
+</ol>
+<ol>
+<li>常见分布式系统原理，map reduce，spark， flink， tensorflow</li>
+</ol>
+<ol>
+<li><p>计算机体系结构，量化分析方法，</p>
+<p>amdahl’ law , 1/((1-P)+(P/N) ：P是程序并行化比例，N是处理器个数</p>
+<p>Roofline model</p>
+<p>流水线分析</p>
+</li>
+</ol>
+<ol>
+<li>操作系统原理及常用系统诊断工具，资源利用率分析</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2019/04/22/category-feature/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/22/category-feature/" class="post-title-link" itemprop="url">处理类别特征</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-22 23:28:34" itemprop="dateCreated datePublished" datetime="2019-04-22T23:28:34+08:00">2019-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 16:56:20" itemprop="dateModified" datetime="2020-02-23T16:56:20+08:00">2020-02-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>one hot encoding</p>
+<ol>
+<li><p>pd.get_dummies(array_like)，得到的是最终的onehot编码。</p>
+</li>
+<li><p>DictVectorizer，可以sparse=True，结果toarray或者直接sparse=False</p>
+<p>输入df.to_dict(orient=’record’)，类别的结果通过get_feature_names()获取</p>
+</li>
+<li><p>LabelEncoder + OneHotEncoder（同样有sparse参数，需要toarray）</p>
+<p>LabelEncoder将单列字符串类型转换为整数类型，如：[‘a’, ‘a’, ‘b’, ‘c’]转换成[0, 0, 1, 2]，结果为classes_属性。</p>
+<p>OneHotEncoder只能将整数类型做onehot编码</p>
+<p>传入为2D的array_like，若只有一列，可以reshape(-1,1)，结果为onehot结果，但不能得到features的名字。</p>
+</li>
+</ol>
+</li>
+<li><p>降维会损失原始数据的信息，但one hot后会生成较多特征，可以考虑</p>
+</li>
+<li><p>mean encoding</p>
+<p>主要思想是，考虑label的值，来计算类别特征的统计值，从而构造新特征。因为生成的特征跟label的数量有关，这种方法在类别变量的基数很大的时，会有效减少新生成的特征数量。</p>
+<p>对于分类问题，若目标有C个类别，则会生成C-1个特征，回归问题生成一个特征。</p>
+<p>对分类问题，生成的特征表示该记录，label的一个贝叶斯估计。这个概率是其先验和后验概率的加权：</p>
+<script type="math/tex; mode=display">\lambda * prior + (1 - \lambda) * post</script><p>先验: $ prior = P(y=c) = \frac{y=c的样本总数}{所有样本个数} ​$</p>
+<p>后验概率：$ post=P(y=c|X=x_i) = \frac{该类别特征和label占所有样本的比例}{类别特征占所有样本的比例} $</p>
+<p>在使用时，$ \lambda = \frac{1}{1 + e^{-\frac{(n-k)}{f}}} $</p>
+<p>这个权重可以根据特征样本的占比来调整先验和后验的占比，若特征样本少，则先验的权重高，若特征样本多，则后验的权重高。f是一个参数，n是样本的总数，k是特征样本数。</p>
+<p>回归问题时，先验和后验的计算转换成求对应值的期望</p>
+<p>即：$ E[P(y=y_i)] ​$和$ E[P(y=y_i|X=x_i)] ​$</p>
+</li>
+</ul>
+<p>  catboost是一个可以支持类别特征处理的boosting machine，有评估表明，在有类别特征时较优，但无类别特征时表现一般。</p>
+<p>  主要的资料有：</p>
+<p>  <a href="http://helios.mm.di.uoa.gr/~rouvas/ssi/sigkdd/sigkdd.vol3.1/barreca.pdf" target="_blank" rel="noopener">A Preprocessing Scheme for High Cardinality Categorical Attributes Classification and Predict Problems</a></p>
+<p>  <a href="https://www.researchgate.net/profile/Liudmila_Ostroumova_Prokhorenkova/publication/318030603_Fighting_biases_with_dynamic_boosting/links/59b6742d0f7e9bd4a7fbef17/Fighting-biases-with-dynamic-boosting.pdf" target="_blank" rel="noopener">Fighting_biases_with_dynamic_boosting</a></p>
+<p>  <a href="https://arxiv.org/abs/1810.11363" target="_blank" rel="noopener">CatBoost: gradient boosting with categorical features support</a></p>
+<p>  <a href="https://arxiv.org/pdf/1706.09516.pdf" target="_blank" rel="noopener">CatBoost: unbiased boosting with categorical features</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2019/04/21/sys-performance-command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/21/sys-performance-command/" class="post-title-link" itemprop="url">查看系统性能的命令</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-21 13:43:39" itemprop="dateCreated datePublished" datetime="2019-04-21T13:43:39+08:00">2019-04-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 16:55:40" itemprop="dateModified" datetime="2020-02-23T16:55:40+08:00">2020-02-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><p>查看cpu信息<br>cat /proc/cpuinfo</p>
+</li>
+<li><p>vmstat<br>是个linux下的命令，查看系统状态<br>可以加两个参数指定采样的间隔时间个总的采样次数，如：vmstat 2 10，为两秒一次，共显示十次<br>显示的值有：procs, memory, swap, io, system, cpu几个部分<br>procs：<br>r：等待运行的进程数<br>b：阻塞的进程数<br>memory：<br>swpd：虚拟内存swap已使用的大小<br>free：空闲的物理内存的空闲<br>buff：用于buffers的内存大小，包括file meta和设备交互的数据<br>cache：用于cache的内存大小，包括文件数据和mmap调用后的内存映射信息。和buff的区别是buffer和设备交互，从设备读取或写到设备（flush），但是cache是在文件系统内部交互的。<br>swap：<br>si：从磁盘到swap的内存数据，每秒<br>so：从swap到磁盘的内存数据，每秒<br>IO：<br>bi：从块设备（如磁盘）进入到系统的块数目（blocks/s）<br>bo：从系统输出到块设备的块数目（blocks/s）<br>system：<br>in: interrupt，每秒的中断数<br>cs: context switch，每秒的上下文切换数<br>CPU：<br>us: user time, 用户CPU时间<br>sy: system time，系统CPU时间<br>id: idle，空闲的CPU时间,在2.5.61前包括了io等待时间<br>wa: waiting for io ，CPU等待IO的时间<br>st: stolen from virtual machine</p>
+</li>
+<li><p>top<br>  开头是统计区，统计了系统，进程，内存，swap的信息<br>  load average：系统1min，5min和15min内的负载情况。一般要除以CPU核数，最佳值是1。<br>  进程内显示的是各个区域在CPU使用时的占比，除了us，sy等外<br>  ni：改变优先级的进程占CPU使用率的比<br>  hi：hard interrupt硬中断<br>  si：soft interrupt</p>
+<p>  进程状态监控中：<br>  PR：进程优先级<br>  NI：nice，负值表高优先级，正值表低优先级<br>  VIRT：进程使用内存总量，包括虚拟内存和物理内存，单位都是KB<br>  RES：进程使用的物理内存大小<br>  SHR：共享内存大小<br>  S：进程状态。R：运行，S：睡眠，D，不可中断的睡眠，T：停止，Z：僵尸进程。</p>
+<p>  使用技巧：<br>  按1，查看多核运行情况<br>  shift + p/m按cpu和内存占用排序</p>
+</li>
+<li><p>ip -s link<br>也是一个linux下的命令，link表示显示链路层信息，-s表示statstic</p>
+</li>
+<li><p>df -h<br>查看磁盘</p>
+</li>
+<li><p>free -h<br>查看内存</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2019/04/15/timeseries/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/15/timeseries/" class="post-title-link" itemprop="url">时间序列模型</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-15 21:45:43" itemprop="dateCreated datePublished" datetime="2019-04-15T21:45:43+08:00">2019-04-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 17:52:06" itemprop="dateModified" datetime="2020-02-23T17:52:06+08:00">2020-02-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>时间序列是平稳，则不会有趋势和季节性。</p>
+<p>检验的方式：</p>
+<p>a)自相关系数和偏相关系数，画自相关系数图，如果快速衰减则是一个平稳序列，否则不是</p>
+<p>b) adfuller，看p值</p>
+<p>如果不平稳，则需要进行差分，arima要求时间序列必须是一个平稳序列。</p>
+<ol>
+<li><p>ma,wma</p>
+<p>moving average有一个参数，是向前滑动<strong>k</strong> periods。</p>
+<p>设当前点的可以存在实际值 $Z_t,t \in(1,N)$ ，其预测值 $S_t,  t\in(N+1, N+M)$,</p>
+<script type="math/tex; mode=display">\left \{   \begin {aligned} S_t = \frac{1}{k}(Z_{t-k} + …+Z_{t-1}), t\in(1,N)\\S_t = \frac{1}{k}(S_{t-k} + …+S_{t-1}), t\in(N+1,N+M)  \end {aligned}   \right.</script><p>所以可以根据前N个值计算出准确度。</p>
+</li>
+</ol>
+<p>   如果是 weight moving average，向前滑动n，则需要有n个参数$w_i, i\in(1,n)$</p>
+<p>   存在条件: $ \sum_i^n{w_i} = 1$</p>
+<script type="math/tex; mode=display">S_i = w_1* Z_{t-n} + w_2* Z_{t-k+1} + …+w_n* Z_{t-1}</script><p>   跟ma类似</p>
+<ol>
+<li><p>arima</p>
+<p>ARIMA（p，d，q）模型中选择合适模型，其中p为自回归项，d为差分阶数，q为移动平均项数</p>
+<p>为了得到平稳序列，差分次数d可以作为arima参数</p>
+<p>根据自相关图和偏自相关图，尝试参数p和q，评估指标为aic,bic,hqic（越小越好）。</p>
+<p>​    model = sm.tsa.ARMA(y, (p, q)).fit()</p>
+<p>​    print(model.aic, model.bic, model.hqic)</p>
+<p>​    # 残差是否为标准正态分布，可以用qqplot</p>
+<p>​    qqplot(model.resid, line=’q’,fit=True)</p>
+</li>
+</ol>
+<ol>
+<li><p>holt-winter</p>
+</li>
+<li><p>prophet</p>
+</li>
+<li><p>croston</p>
+</li>
+<li><p>VECM<br>预测模型，向量的预测模型，通常可以对多个有类似趋势的时序一起预测，利用他们的相关性，互项挟制着运动的信息，来预测<br><a href="https://www.statsmodels.org/dev/generated/statsmodels.tsa.vector_ar.vecm.VECM.html" target="_blank" rel="noopener">vecm</a></p>
+</li>
+<li><p>马尔科夫过程，非线性模型<br>用于捕捉一些大行情的转移。举个例子，预测GDP的增长率，会有隐藏层的经济周期作为影响（衰退期，增长期循环出现），这里就把这个隐藏的过程用马尔科夫过程来描述，借助对隐藏层的刻画来帮助预测表面的GDP。零售品的预测，也有一些底层的比如消费旺季、淡季这种，人为划定很主观，让模型自己给你识别，横截面扩充sku维度来增加信息。<br>Markov那个是非线性，自己训练自己的历史，但是能识别什么时候需要参数调整<br><a href="https://www.statsmodels.org/dev/examples/notebooks/generated/markov_autoregression.html" target="_blank" rel="noopener">markov_autoregression</a></p>
+</li>
+<li><p>Threshold autoregressive 模型，是非线性的ARIMA模型<br>能识别threshold的这种，这个很像markov非线性那个，是通过历史（可观测的销量）值判定模型发生改变了，也就是一段时间是模型1，一段时间是模型2，来回改变，这样比一成不变的arima要灵活</p>
+</li>
+<li><p>GARCH(p,q)， ARCH(p)<br>根据历史销量预测未来的标准差，GARCH(p,q)， ARCH(p)看这两部分就行<br><a href="http://www.blackarbs.com/blog/time-series-analysis-in-python-linear-models-to-garch/11/1/2016" target="_blank" rel="noopener">garch</a></p>
+</li>
+<li><p>动态因子模型<br>动态因子模型，Stock and Watson 那个很著名，着可以多个sku一起训练，找到他们共同的影响因子，降低维度， 用因子预测sku销量<br><a href="http://www.chadfulton.com/topics/dfm_coincident.html" target="_blank" rel="noopener">dfm_coincident</a></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2019/03/03/common-loss/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/03/03/common-loss/" class="post-title-link" itemprop="url">常见损失函数</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-03 13:59:55" itemprop="dateCreated datePublished" datetime="2019-03-03T13:59:55+08:00">2019-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 17:53:45" itemprop="dateModified" datetime="2020-02-23T17:53:45+08:00">2020-02-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="regression"><a href="#regression" class="headerlink" title="regression"></a>regression</h3><p><strong>MSE</strong>： mean square error</p>
+<p>mse = $\frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2$</p>
+<p><strong>MAE</strong>: mean absolute error</p>
+<p>mae = $\frac{1}{m} \sum_i^n|y_i - \hat{y_i}|$</p>
+<p><strong>RMSE</strong>: root mean</p>
+<p>mse = $\sqrt{ \frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2}$</p>
+<p>mse和rmse被称为regression L2 loss， mae是L1 loss</p>
+<p><strong>possion loss</strong></p>
+<p>泊松回归假设：1）y服从泊松分布，即期望为参数$\lambda$,且P(y=k)= $ e^{-\lambda}\lambda^k / k! $ ，2）y的期望的对数可以通过线性组合来建模,也就是 $ E(y) = e^{w^Tx} $</p>
+<p>根据假设得: $ P(y|x;w)=\frac{e^{yw^Tx}e^{-e^{w^Tx}}}{y!} $,然后最大似然估计后得到</p>
+<p>损失函数：$ L_{possion_reg}=\sum_i^n{y_i*w^Tx_i - e^{w^Tx_i}}  $</p>
+<p>可以用于拟合计数问题，其他的广义线性模型会假设y服从其他的分布。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/03/03/common-loss/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2017/12/10/a-scala-tutorial-for-java-programmers/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/12/10/a-scala-tutorial-for-java-programmers/" class="post-title-link" itemprop="url">A-Scala-Tutorial-for-Java-Programmers</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-12-10 13:25:42" itemprop="dateCreated datePublished" datetime="2017-12-10T13:25:42+08:00">2017-12-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 18:12:27" itemprop="dateModified" datetime="2020-02-23T18:12:27+08:00">2020-02-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1>[译]为Java程序员而做的Scala教程</h1>
+<p>原文地址：<a href="http://docs.scala-lang.org/tutorials/scala-for-java-programmers.html" target="_blank" rel="noopener">http://docs.scala-lang.org/tutorials/scala-for-java-programmers.html</a></p>
+<h2 id="简介"><a class="header-anchor" href="#简介">¶</a>简介</h2>
+<p>本文对Scala语言及其编译器进行了一个跨素的介绍。旨在向有编程经验的人介绍Scala能被用来做什么，阅读前起码需要了解Java的面向对象的知识。</p>
+<h2 id="一个简单的例子"><a class="header-anchor" href="#一个简单的例子">¶</a>一个简单的例子</h2>
+<p>在第一个列子里，我们将用到标准的hello world程序。这段程序没什么了不起，但是能在对语言本身并不了解的情况下，描述出如何使用Scala的工具。程序如下：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]) &#123;</span><br><span class="line">        println(<span class="string">"Hello, World!"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>程序的结构和Java程序很相似：它们由一个叫<em>main</em>的方法组成，该方法接收了一个string数组的命令行参数。main的方法体里有一个单独的调用，那是一个预定义的<em>println</em>。<em>main</em>方法不返回值(它是一个过程方法). 因此, 不需要声明返回值.</p>
+<p>和Java程序不太一样的是，声明一个<em>对象</em>是可以包含<em>main</em>方法的。 这种声明方式，引入了我们常说的单例对象，也就是一个类只有一个实例的情况。上面的那种声明方式同时声明了叫HelloWorld的类和它的一个实例，这个实例也叫HelloWorld. 这个实例会在请求的时候被创建，也就是第一次被调用的时候.</p>
+<p>机制的读者会发现main方法并没有被声明为static. 因为Scala里没有静态成员 (方法或变量域). 在相比使用静态成员,Scala会将这些静态成员定义在单例的对象里.</p>
+<h3 id="编译这个例子"><a class="header-anchor" href="#编译这个例子">¶</a>编译这个例子</h3>
+<p>要编译这个例子, 我们要用scalac, Scala编译器. scalac和大部分的编译器一样:接收一个源文件作为参数, 也许有些可选项, 然后产生一个或若干个对象文件. 产生的对象文件都是标准的Java文件.</p>
+<p>如果我们将上面的程序保存为HelloWorld.scala, 我们能够通过下面的命令行编译它(大于号 &gt; 只表示这是在shell环境下，不要一起码了):</p>
+<p>&gt; scalac HelloWorld.scala</p>
+<p>这将在当前文件夹生成若干文件，其中会有一个HelloWorld.class, 这个文件中的类可以被scala 命令行执行.</p>
+<h3 id="运行这个例子"><a class="header-anchor" href="#运行这个例子">¶</a>运行这个例子</h3>
+<p>编译完成后, Scala程序就可以通过scala命令运行. 它的使用方法和用java命令运行Java程序很类似,接受的参数夜是一样. 上面的例子可以通过下面的命令运行，并得到对应的输出:</p>
+<p>&gt; scala -classpath . HelloWorld<br>
+Hello, world!</p>
+<h2 id="和Java交互"><a class="header-anchor" href="#和Java交互">¶</a>和Java交互</h2>
+<p>Scala的一个优势是，它和Java代码的交互非常简单. java.lang包里所有的类都是被默认引入的，而其他的类需要显式引入.</p>
+<p>让我们通过一个例子来解释这点. 我们希望获取当前时间，并按照某个地区的习惯格式化它,比如中国。</p>
+<p>Java定义了许多强大的工具类, 比如 Date和DateFormat. 因为Scala和Java可以无缝操作, 因此在Scala中没有必要实现在Java库中已有的类，而且Scala引入包的方式相比Java而言也更简单：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.&#123;<span class="type">Date</span>, <span class="type">Locale</span>&#125;</span><br><span class="line"><span class="keyword">import</span> java.text.<span class="type">DateFormat</span></span><br><span class="line"><span class="keyword">import</span> java.text.<span class="type">DateFormat</span>._</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">ChineseDate</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]) &#123;</span><br><span class="line">    <span class="keyword">val</span> now = <span class="keyword">new</span> <span class="type">Date</span></span><br><span class="line">    <span class="keyword">val</span> df = getDateInstance(<span class="type">LONG</span>, <span class="type">Locale</span>.<span class="type">SIMPLIFIED_CHINESE</span>)</span><br><span class="line">    println(df format now)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Scala的引入语句看起来和Java的很相似, 然而实际上前者更强大. 来自同一个包的多个类可以用包括在中括号中的方式，一起被引入，如上面第一行。另一个不同是，当引入整个包，或者整个类时，Scala使用下划线 (_) 取代了星号 (*). 这是因为，在Scala中星号是一个有效的标识符(比如. 方法名), 这在之后也会看到。</p>
+<p>第三行的import语句因为引入了DateFormat类. 这就使得静态方法 getDateInstance 和静态域LONG是直接可见的了.</p>
+<p>在main方法中我们首先创建了一个Java的Data类的实例，它默认是当前时间。接着我们用之前引入的静态方法getDateInstance定义了一个date format. 最后我们按照地区格式化打印出了当前时间. 最后一行展示出了Scala语法里的一个有趣的特性. 只有一个参数的方法可以通过内嵌的语法调用.</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df format now </span><br><span class="line">df.format(now)</span><br></pre></td></tr></table></figure>
+<p>前一个表达式是后者的一种简洁的写法。</p>
+<p>虽然这表面看起来是一个很小的语法细节, 但结果却很重要。这一点会在之后继续深入。</p>
+<p>为了结束这一部分和Java的交互的内容, 需要另外指出的是，Scala是可以直接集成Java的类，也可以去实现Java的接口的。</p>
+<h2 id="所有的东西都是对象"><a class="header-anchor" href="#所有的东西都是对象">¶</a>所有的东西都是对象</h2>
+<p>Scala是一个纯面向对象的语言，从这个意义上来讲，所有的东西都是对象，包括数字和函数。从这点上来说，它和Java不一样，因为Java区分了原始类型和引用类型, 也不能将函数作为值来使用.</p>
+<h3 id="数字是对象"><a class="header-anchor" href="#数字是对象">¶</a>数字是对象</h3>
+<p>因为数字是对象, 所以它们也有方法. 而且事实上，如下的算数表达式是由多个函数调用组成的:</p>
+<p>1 + 2 * 3 / x<br>
+这等价于下面的表达式</p>
+<p>(1).+(((2).*(3))./(x))<br>
+这表示+, *, 等等在Scala里都是有效的标识符。</p>
+<p>第二个版本里，数字外的括号是必须的，因为Scala的语法解析使用了词标记的最长匹配规则。因此表达式 1.+(2) 会被分割成 1., +, and 2.，因为1.和1都是有效的，但是1.比后者更长，而1.会被解释成字面量1.0，从而变成一个Double而不是Int。写成 (1).+(2) 可以避免 1 被解释成一个Double。</p>
+<h3 id="函数是对象"><a class="header-anchor" href="#函数是对象">¶</a>函数是对象</h3>
+<p>或许更让Java程序员吃惊的是, 在Scala里，函数也是对象. 这就使得函数作为参数传递，作为变量存储，以及从其他函数返回都成为可能。这种将函数当成值来操作的能力是一种非常有趣的编程范式，也就是函数式编程的基石之一。</p>
+<p>作为阐释为什么将函数看作值是非常有用的例子，让我们看一个计时器函数，它希望每一秒都有些动作。 我们怎么传递这个需要做的动作呢？ 合理的做法是，作为一个函数. 这种简单的函数传递方式对许多程序员来说都很熟悉， 通常在UI的代码里, 需要注册一个回调函数，它们会在某些事件发生时被调用。</p>
+<p>下面的代码片段，有个计时器函数oncePerSecond, 它接受一个回调函数作为参数. 函数的类型被写成 () =&gt; Unit 这个类型代表的是一类函数，它们不接收任何的参数，也不返回任何值 (Unit 和C/C++的void类似). 主函数调用计时器函数，传递的是一个在终端上打印一句话的回调函数，换句话说，这段程序每秒都会在控制台上打印出“time flies like an arrow”。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">Timer</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">oncePerSecond</span></span>(callback: () =&gt; <span class="type">Unit</span>) &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123; callback(); <span class="type">Thread</span> sleep <span class="number">1000</span> &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">timeFlies</span></span>() &#123;</span><br><span class="line">    println(<span class="string">"time flies like an arrow..."</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]) &#123;</span><br><span class="line">    oncePerSecond(timeFlies)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了打印出这句话，我们使用的时预定义的println，而不是System.out中的那个。</p>
+<h3 id="匿名函数"><a class="header-anchor" href="#匿名函数">¶</a>匿名函数</h3>
+<p>尽管上面的程序很好理解，它也能被稍作改进. 第一，注意到函数timeFlies被定义只是为了之后传递给oncePerSecond函数。 为了这个只用一次的函数，对它命名是没有必要的, 事实上，在这个函数被传递给oncePerSecond时再去构造它会更好. 在Scala里使用匿名函数使得这成为可能，匿名函数指的是函数没有名字. 使用匿名函数修正的版本是：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">TimerAnonymous</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">oncePerSecond</span></span>(callback: () =&gt; <span class="type">Unit</span>) &#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123; callback(); <span class="type">Thread</span> sleep <span class="number">1000</span> &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]) &#123;</span><br><span class="line">    oncePerSecond(() =&gt;</span><br><span class="line">      println(<span class="string">"time flies like an arrow..."</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和右键头 =&gt; 相关的就是一个匿名函数，箭头分隔了函数的参数列表和函数体。这个例子中，参数列表是个空的，因为箭头左侧的括号里是个空的，而函数体则与上面的timeFlies函数相同。</p>
+<h2 id="类"><a class="header-anchor" href="#类">¶</a>类</h2>
+<p>正如我们所见，Scala是一个面向对象的语言， 因此它是有类这个概念的. (有些面向对象语言是有缺失的，它们没有类的概念，但是Scala是有的) 。在Scala中声明类的语法和Java里的很相近。 一个重要的不同是，Scala中的类可以有参数. 这在下面对复数的定义里可以体现出来。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>(<span class="params">real: <span class="type">Double</span>, imaginary: <span class="type">Double</span></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">re</span></span>() = real</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">im</span></span>() = imaginary</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个复数类接收了两个参数, 复数的实数部分和虚数部分。当创建这个类的实例时，这两个参数必须被传递, 如： new Complex(1.5, 2.3). 这个类包含两个方法, re and im,可以访问这两个部分。</p>
+<p>可以注意到，这两个方法的返回值并没有明显的给出来. 通过查看这些方法右边，编译器能够推倒出这两个方法返回的是Double类型的值。</p>
+<p>编译器并不是总能像上面这样推断出值的类型，不幸的是并没有简单的规则能准确的知道，哪些类型是可以被推断出来的，而哪些却不行。在实际使用中，这通常并不是一个严重的问题，因为如果不能推断出那些没有明确指出的类型，编译器会报错。一个简单的规则是，Scala的初级程序员应当在能简单地从上下文推断出类型的时候，不声明变量的类型，然后看编译器是否通过。试过几次后，程序员就能对什么时候略去变量声明，而什么时候应该指定类型有感觉了。</p>
+<h3 id="没有参数的方法"><a class="header-anchor" href="#没有参数的方法">¶</a>没有参数的方法</h3>
+<p>上面的方法re和im有个小问题，为了去调用它们，必须在它们的名字后面放上空的括号，就像下面这样：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">ComplexNumbers</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]) &#123;</span><br><span class="line">    <span class="keyword">val</span> c = <span class="keyword">new</span> <span class="type">Complex</span>(<span class="number">1.2</span>, <span class="number">3.4</span>)</span><br><span class="line">    println(<span class="string">"imaginary part: "</span> + c.im())</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果不带上空的括号，能像访问成员域一样访问实部和虚部就很好了。这在Scala中是可行的，通过用没有参数的方法定义它们，就可以实现简化。这些方法不同于0参数的方法。无论是声明还是使用，它们的名字后面都是没有括号的。因此复数类可以被按如下重写。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>(<span class="params">real: <span class="type">Double</span>, imaginary: <span class="type">Double</span></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">re</span> </span>= real</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">im</span> </span>= imaginary</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="继承和重写"><a class="header-anchor" href="#继承和重写">¶</a>继承和重写</h3>
+<p>Scala中所有的类都继承自一个父类。当像上面例子中的复数一样，没有指定父类时，默认使用的是scala.AnyRef。</p>
+<p>在Scala中，是可以重写父类方法的。 然而，为了避免意外性的重写，当对方法进行重写时，需要强制使用override关键字。对Complex类增加一个继承自Object的重写方法，如下：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span>(<span class="params">real: <span class="type">Double</span>, imaginary: <span class="type">Double</span></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">re</span> </span>= real</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">im</span> </span>= imaginary</span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">toString</span></span>() =</span><br><span class="line">    <span class="string">""</span> + re + (<span class="keyword">if</span> (im &lt; <span class="number">0</span>) <span class="string">""</span> <span class="keyword">else</span> <span class="string">"+"</span>) + im + <span class="string">"i"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Case-Classes-和模式匹配"><a class="header-anchor" href="#Case-Classes-和模式匹配">¶</a>Case Classes 和模式匹配</h3>
+<p>树是一类经常出现在程序中的数据结构。比如解释器和编译器在内部通常将程序表示成树结构，XML文档是树，一系列的容器，比如RBTree也是树。</p>
+<p>我们现在通过一个小的计算程序考察在Scala中，树是如何被表示和操作的。这个程序的目的是操作简单的算数表达式，包括了整数常量和变量的加法，两个简单这种例子是：1+2 and (x+x)+(7+y).</p>
+<p>首先我们决定表示这些表达式，最自然的方式就是使用树：节点是运算符（也就是这里的加法），叶子是值（也就是这里的常量和变量）。</p>
+<p>在Java中，树节点可以用抽象的父类表示，具体的子类是节点或者叶子。在函数式编程语言里，对所有的情况都可以使用代数数据类型。Scala提供了case class的概念，这有点在前面两者的中间。下面是树的数据类型如何被定义的：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Tree</span></span></span><br><span class="line"><span class="class"><span class="title">case</span> <span class="title">class</span> <span class="title">Sum</span>(<span class="params">l: <span class="type">Tree</span>, r: <span class="type">Tree</span></span>) <span class="keyword">extends</span> <span class="title">Tree</span></span></span><br><span class="line"><span class="class"><span class="title">case</span> <span class="title">class</span> <span class="title">Var</span>(<span class="params">n: <span class="type">String</span></span>) <span class="keyword">extends</span> <span class="title">Tree</span></span></span><br><span class="line"><span class="class"><span class="title">case</span> <span class="title">class</span> <span class="title">Const</span>(<span class="params">v: <span class="type">Int</span></span>) <span class="keyword">extends</span> <span class="title">Tree</span></span></span><br></pre></td></tr></table></figure>
+<p>事实上类Sum, Var和 Const 被声明为 case classes 表示它们在若干方面不同于标准的类。</p>
+<ul>
+<li>在创建类的实例时，不再强制使用new关键字（也就是说可以用Const(5)替代 new Const(5)）。</li>
+<li>getter函数会为构造函数中的参数自动定义（Const实例c可以用c.v的写法获取构造函数中的参数v的值）</li>
+<li>提供了equals和hashCode的默认定义，它们不是作用在实例的指针，而是实例内容上。</li>
+<li>提供了toString的默认定义，可以以源代码形式打印出实例的值。（如表达式x+1，可以打印出Sum(Var(x),Const(1))）</li>
+<li>这些类的实例，可以通过模式匹配被分解，正如下面将讲述的。</li>
+</ul>
+<p>既然已经用数据类型表示来算数表达式，我们现在就定义操作符来操作它们。我们以在某些环境里计算表达式的函数开始。环境的目的是讲值赋给变量，比如在｛ x -&gt; 5｝也就是x为5的环境里，表达式x+1结果为6.</p>
+<p>因此我们必须找到一个表示环境的方式. 我们当然可以使用关联性的数据结构，比如hash表，但是我们也能直接使用函数。环境可以看做一个将值和变量名关联的函数。环境{ x -&gt; 5 }可以用Scala简写为：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="keyword">case</span> <span class="string">"x"</span> =&gt; <span class="number">5</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>这种记法定义了一个函数，如果函数接受一个字符串&quot;x&quot;作为参数，则返回整数5，否则抛出异常。</p>
+<p>在写评价（evaluation）函数前，我们可以给这种环境的类型定一个名字。环境的类型当然能总是使用String =&gt; Int来表示，但是若我们为这种类型引入一个名字，程序就会简化，之后的变化也会更简单，这在Scala中已经可以通过下面的记法实现了。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">type</span> <span class="title">Environment</span> </span>= <span class="type">String</span> =&gt; <span class="type">Int</span></span><br></pre></td></tr></table></figure>
+<p>之后,type Environment就能作为String =&gt; Int这类函数类型的别名使用了。</p>
+<p>我们现在给出评价函数. 概念上很简单:</p>
+<ul>
+<li>两个表达式求和后的值是两个表达式的值的和;</li>
+<li>变量的值来源于环境;</li>
+<li>常量的值是常量自身</li>
+</ul>
+<p>然而用Scala表达上述概念，就会困难一些：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">eval</span></span>(t: <span class="type">Tree</span>, env: <span class="type">Environment</span>): <span class="type">Int</span> = t <span class="keyword">match</span> &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="type">Sum</span>(l, r) =&gt; eval(l, env) + eval(r, env)</span><br><span class="line">  <span class="keyword">case</span> <span class="type">Var</span>(n)    =&gt; env(n)</span><br><span class="line">  <span class="keyword">case</span> <span class="type">Const</span>(v)  =&gt; v</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当在树t上执行模式匹配时，评价函数开始工作。<br>
+直观上来看，上面的定义意境很清晰了：<br>
+它首先检查t是不是一个Sum，如果是，将左子树绑定到新变量l上，右子树绑定到变量r上，然后继续处理箭头后面的表达式。表达式能利用绑定在箭头左侧模式上的变量，比如l，r。<br>
+如果第一次检查不成功，也就是树不是一个Sum，它会继续检查是不是一个Var。如果是，则将Var节点上的名字和变量n绑定，并处理右手边的表达式。<br>
+如果第二次检查还失败，则t不是一个Sum也不是Var，它会检查是不是一个Const，如果是，则将Const中的值和变量v绑定，接着处理右手边。<br>
+最终，若所有的检查都失败了，将会抛出一个异常，通知表达式的模式匹配失败，这可能只有当树的声明了更多的子类时会发生。</p>
+<p>我们看到模式匹配的基本思想是试图将一个值与一系列模式匹配，一旦模式匹配，提取并命名值的各个部分，最后使用这些命名部分去计算一些代码。</p>
+<p>有经验的面向对象编程者可能会奇怪为什么我们在Tree类及其子类里不定义eval方法。我们事实上也可以这样做，因为Scala允许在case classes里像在通常的类里一样定义方法。决定使用模式匹配还是方法是一个代码品味的问题，但在拓展性上也会有影响：</p>
+<ul>
+<li>在使用方法时，很容易添加一种新类型的节点，因为只需重新定义一个子类即可；另一方面，若添加一个操作树的新操作是不方便了，因为这需要树的所有子类都进行修改。</li>
+<li>在使用模式匹配时，情况就相反了：添加新类型的节点需要修改Tree上所有的模式匹配函数，然后将新节点考虑进去，另一方面，添加新的操作就容易多了，只需要添加一个新的独立的操作就行了。</li>
+</ul>
+<p>为了模式匹配更进一步，我们在算数表达式上新定义一个操作：符号求导，读者可能记得这个操作的规则如下：</p>
+<ul>
+<li>导数的和是和的导数</li>
+<li>若变量v是求导的变量，则v的导数是1，否则导数是0</li>
+<li>常数的导数是0</li>
+</ul>
+<p>这个规则能被字面的转化成Scala代码，也就是下面的定义：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">derive</span></span>(t: <span class="type">Tree</span>, v: <span class="type">String</span>): <span class="type">Tree</span> = t <span class="keyword">match</span> &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="type">Sum</span>(l, r) =&gt; <span class="type">Sum</span>(derive(l, v), derive(r, v))</span><br><span class="line">  <span class="keyword">case</span> <span class="type">Var</span>(n) <span class="keyword">if</span> (v == n) =&gt; <span class="type">Const</span>(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">case</span> _ =&gt; <span class="type">Const</span>(<span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个函数引入了两个与模式匹配相关的新概念。<br>
+首先，变量的case表达式有一个守护表达式，也就是if关键字后的表达式。除非该表达式为真，模式匹配才成功。在这里，它是用来确保只有在变量的名字和求导的变量v一致时，才返回常数1的。<br>
+第二个新特性是通配符，不需要任何名字，这种情况下会匹配所有的值。</p>
+<p>虽然我们还没有深入到模式匹配最厉害的地方，但为了简短起见，我们在这里停住。我们还要看看上面的两个函数是如何在实际的例子里起作用的。为了这个目的，让我们写一个简单的主函数，它表现了几个在表达式 (x+x)+(7+y)上的操作：首先在环境{ x -&gt; 5, y -&gt; 7 }上计算x的导数，然后在是y的导数。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]) &#123;</span><br><span class="line">  <span class="keyword">val</span> exp: <span class="type">Tree</span> = <span class="type">Sum</span>(<span class="type">Sum</span>(<span class="type">Var</span>(<span class="string">"x"</span>),<span class="type">Var</span>(<span class="string">"x"</span>)),<span class="type">Sum</span>(<span class="type">Const</span>(<span class="number">7</span>),<span class="type">Var</span>(<span class="string">"y"</span>)))</span><br><span class="line">  <span class="keyword">val</span> env: <span class="type">Environment</span> = &#123; <span class="keyword">case</span> <span class="string">"x"</span> =&gt; <span class="number">5</span> <span class="keyword">case</span> <span class="string">"y"</span> =&gt; <span class="number">7</span> &#125;</span><br><span class="line">  println(<span class="string">"Expression: "</span> + exp)</span><br><span class="line">  println(<span class="string">"Evaluation with x=5, y=7: "</span> + eval(exp, env))</span><br><span class="line">  println(<span class="string">"Derivative relative to x:\n "</span> + derive(exp, <span class="string">"x"</span>))</span><br><span class="line">  println(<span class="string">"Derivative relative to y:\n "</span> + derive(exp, <span class="string">"y"</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行这段程序，期待的输出应该是：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Expression: Sum(Sum(Var(x),Var(x)),Sum(Const(7),Var(y)))</span><br><span class="line">Evaluation with x=5, y=7: 24</span><br><span class="line">Derivative relative to x:</span><br><span class="line"> Sum(Sum(Const(1),Const(1)),Sum(Const(0),Const(0)))</span><br><span class="line">Derivative relative to y:</span><br><span class="line"> Sum(Sum(Const(0),Const(0)),Sum(Const(0),Const(1)))</span><br></pre></td></tr></table></figure>
+<p>检查输出, 我们能看到求导的结果在展示给用户前就已经简化了。使用模式匹配去定义一个基本的简化函数是一个有趣（也很有技巧）的问题，这就留给有经验的读者了。</p>
+<h2 id="特性（traits）"><a class="header-anchor" href="#特性（traits）">¶</a>特性（traits）</h2>
+<p>除从父类继承以外，Scala的类也能从一个或若干个特征中引入代码。</p>
+<p>或许对Java程序员来说，最简单的理解traits的方式是将它们看成能包含代码的接口。在Scala中，当一个类从特征中继承了，它就实现了特征的接口，也继承了包含在特征中的所有代码。</p>
+<p>为了了解特征多么有用，我们先看看经典的例子，排序对象。比较特定类的对象是很有用的，例如可以对它们进行排序。在java中，有可比性的对象实现了Comparable接口。在Scala里将Comparable定义为一个特征，可以做的比Java更好一些，我们将这称为Ord。</p>
+<p>比较对象时，有六个不同的谓词可能有用: 小于，小于等于，等于，不等于，大于等于，大于。然而，这六个如果都定义，则有点过分了,因为如果有其中的两个，六个中剩下的四个也都可以被表示了。比如给定了等于和小于的谓词。则其他的谓词也是可以被表示的。Scala里, 所有的这些通过下面的特征声明，都可以被很好的捕捉到。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">trait</span> <span class="title">Ord</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">&lt;</span> </span>(that: <span class="type">Any</span>): <span class="type">Boolean</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">&lt;=</span></span>(that: <span class="type">Any</span>): <span class="type">Boolean</span> =  (<span class="keyword">this</span> &lt; that) || (<span class="keyword">this</span> == that)</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">&gt;</span> </span>(that: <span class="type">Any</span>): <span class="type">Boolean</span> = !(<span class="keyword">this</span> &lt;= that)</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">&gt;=</span></span>(that: <span class="type">Any</span>): <span class="type">Boolean</span> = !(<span class="keyword">this</span> &lt; that)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个定义既创造了一种新的类型Ord，它的作用类似java的Comparable接口，又在一个抽象的谓词上默认实现了其他的三个。而相等和不相等的谓词不会出现在这里，只是因为它们默认存在于所有对象中。</p>
+<p>上面使用的Any类型是Scala中所有其他类型的父类。它可以被看作是java的Object的一个更一般的版本，因为它也是Int，Float这种基本类型的父类。</p>
+<p>要使类的对象可以比较，需要定义谓词来测试相等和优先级，而它们被融合在上面的Ord了。举例而言，让我们定义一个日期类，它表示公历中的日期。这样的日期由一天、一个月和一年组成，我们都将其表示为整数。因此，我们定义日期类如下：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Date</span>(<span class="params">y: <span class="type">Int</span>, m: <span class="type">Int</span>, d: <span class="type">Int</span></span>) <span class="keyword">extends</span> <span class="title">Ord</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">year</span> </span>= y</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">month</span> </span>= m</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">day</span> </span>= d</span><br><span class="line">  <span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">toString</span></span>(): <span class="type">String</span> = year + <span class="string">"-"</span> + month + <span class="string">"-"</span> + day</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重要的是在类名和参数后面的继承ORD的声明。它声明类Date继承了Ord这个特征。</p>
+<p>然后，我们重新定义了从Object继承的equals方法，以便通过比较它们各自的字段来正确地比较日期。equals的默认实现是不可用的，因为默认比较的是java对象的指针。定义如下：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">def</span> <span class="title">equals</span></span>(that: <span class="type">Any</span>): <span class="type">Boolean</span> =</span><br><span class="line">  that.isInstanceOf[<span class="type">Date</span>] &amp;&amp; &#123;</span><br><span class="line">    <span class="keyword">val</span> o = that.asInstanceOf[<span class="type">Date</span>]</span><br><span class="line">    o.day == day &amp;&amp; o.month == month &amp;&amp; o.year == year</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>该方法使用了预定义函数isInstanceOf和asInstanceOf。第一个isinstanceof，对应于java的instanceof操作，并返回true当且仅当它的对象是给定类型的一个实例。第二个asInstanceOf，对应于java的转换操作：如果对象是一个给定的类型，则将其视为对应的类型，否则抛出ClassCastException。</p>
+<p>最后，定义的一个方法是测试优先级的谓词，如下所示。它使用另一种预定义的方法，即error，它使用给定的错误消息抛出异常。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">&lt;</span></span>(that: <span class="type">Any</span>): <span class="type">Boolean</span> = &#123;</span><br><span class="line">  <span class="keyword">if</span> (!that.isInstanceOf[<span class="type">Date</span>])</span><br><span class="line">    error(<span class="string">"cannot compare "</span> + that + <span class="string">" and a Date"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">val</span> o = that.asInstanceOf[<span class="type">Date</span>]</span><br><span class="line">  (year &lt; o.year) ||</span><br><span class="line">  (year == o.year &amp;&amp; (month &lt; o.month ||</span><br><span class="line">                     (month == o.month &amp;&amp; day &lt; o.day)))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这就完成了日期类的定义。这个类的实例既是日期，也是可比较对象。此外，他们都定义了六个比较谓词：equals和&lt;直接出现在日期类的定义，其他谓词从Ord特性继承而来。</p>
+<p>当然，不止在这里，特性在其他情况下也很有用，但讨论它们的应用超出了本文档的长度范围。</p>
+<h2 id="范型"><a class="header-anchor" href="#范型">¶</a>范型</h2>
+<p>我们将在本文中探讨的Scala的最后一个特性是泛型。java程序员应该意识到在他们的语言中，泛型的缺失所带来的问题，而这个问题是java 1.5解决。</p>
+<p>泛型是利用类型的参数化来写代码的能力。例如，为链表编写库的程序员面临着决定向列表元素提供哪种类型的问题。由于这个列表可以在许多不同的上下文中使用，所以不可能决定元素的类型必须是什么，例如，int，这将是完全任意的和过度限制的。</p>
+<p>java程序员使用的Object，是所有类型的父类。然而，这个解决方案远远不是理想的，因为它对基本类型（int、长、浮点等）不起作用，这意味着程序员必须插入很多动态类型的转换。</p>
+<p>Scala使得定义泛型类（和方法）来解决这个问题成为可能。让我们用一个尽可能简单的容器类的例子来检查这个例子：一个引用，它可以是空的，也可以指向某个类型的对象。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Reference</span>[<span class="type">T</span>] </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">var</span> contents: <span class="type">T</span> = _</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">set</span></span>(value: <span class="type">T</span>) &#123; contents = value &#125;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">get</span></span>: <span class="type">T</span> = contents</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类Reference的类型是参数化的，称为T，这是其元素的类型。该类型用于类的主体，如content变量的类型、set方法的参数以及get方法的返回类型。</p>
+<p>上面的代码示例引入Scala中的变量，这不需要进一步解释。不过，这个变量的初始值_很有趣，这是一个默认值。此默认值为数值类型的0，布尔类型为false，Unit类型的()，所有对象类型为null。</p>
+<p>要使用这个引用类，需要指定用于类型参数T的类型，即cell包含的元素的类型。例如，要创建和使用保存整数的cell，可以编写以下内容：</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">object</span> <span class="title">IntegerReference</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">main</span></span>(args: <span class="type">Array</span>[<span class="type">String</span>]) &#123;</span><br><span class="line">    <span class="keyword">val</span> cell = <span class="keyword">new</span> <span class="type">Reference</span>[<span class="type">Int</span>]</span><br><span class="line">    cell.set(<span class="number">13</span>)</span><br><span class="line">    println(<span class="string">"Reference contains the half of "</span> + (cell.get * <span class="number">2</span>))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从这个例子中可以看出，在get方法作为整数之前不需要强制返回get方法返回的值。在一个特定的cell中也不可能存储任何整数，因为它被声明为持有整数。</p>
+<h2 id="结论"><a class="header-anchor" href="#结论">¶</a>结论</h2>
+<p>本文档简要介绍了Scala语言，并给出了一些基本示例。感兴趣的读者可以通过示例读取Scala文档，其中包含许多更高级的示例，并在需要时参考Scala语言规范。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2017/12/02/cache-aware/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/12/02/cache-aware/" class="post-title-link" itemprop="url">Cache Aware</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-12-02 17:25:20" itemprop="dateCreated datePublished" datetime="2017-12-02T17:25:20+08:00">2017-12-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 16:58:13" itemprop="dateModified" datetime="2020-02-23T16:58:13+08:00">2020-02-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>cache aware算法用于避免cache misses，更有效的利用缓存。<br>cache aware算法显式利用CPU的cache行为，会考虑和CPU关系更密切的底层机制。<br>cache oblivious也会更好的利用缓存，但代码不是那么底层。<br>典型的例子，二维数组按行遍历和按列遍历。</p>
+<p>写缓存策略:</p>
+<ul>
+<li>nowrite： 不缓存任何写操作，当进行写时，跳过缓存，直接写入磁盘，并且标记缓存失效。</li>
+<li>write-through cache： 写操作更新缓存，同时更新磁盘，但是不标记缓存为失效。</li>
+<li>write-back： 写操作写入缓存，但是不直接更新到磁盘，而是酱缓存页面标记为脏，并加入到脏页列表中。然后回写进程将脏页列表中的页写回到磁盘，最后清理脏标记。</li>
+</ul>
+<p>缓存一致性：<br>所有写内存的操作在共享总线上进行，所以各缓存都可以snooping到，由于一个时钟周期只有一个缓存可以读写内存，所以当某个处理器写内存时，其他处理器就可以使其对应的缓存失效。<br>若在混写模式，写缓存不一定马上写内存，这时需要使用MESI（Modified，Exclusive，Shared，Invalid）协议。处理器修改缓存前需要独占该缓存，其他处理器的该缓存副本失效。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">colortail</p>
+  <div class="site-description" itemprop="description">Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/colortail" title="GitHub → https://github.com/colortail" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tangefan@126.com" title="E-Mail → mailto:tangefan@126.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">colortail</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"colortail.github.io","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="shuffle在有宽依赖（一个父节点的数据会被多个子节点用到）的时候会发生shuffle。在MR里，shuffle连接了map和reduce，它本身的实现在不断优化，所以在spark里，弱化了map和reduce的细节，把shuffle的概念提高了。 简单实现的情况，因为map任务和reduce任务里数据的存储方式是不清楚的，map会生成数量等于reduce任务个数的文件，每个reduce会从上游">
+<meta name="keywords" content="distributed system">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark并行化基本分析">
+<meta property="og:url" content="http://colortail.github.io/2019/05/08/spark-tuning/index.html">
+<meta property="og:site_name" content="高登 - colortail">
+<meta property="og:description" content="shuffle在有宽依赖（一个父节点的数据会被多个子节点用到）的时候会发生shuffle。在MR里，shuffle连接了map和reduce，它本身的实现在不断优化，所以在spark里，弱化了map和reduce的细节，把shuffle的概念提高了。 简单实现的情况，因为map任务和reduce任务里数据的存储方式是不清楚的，map会生成数量等于reduce任务个数的文件，每个reduce会从上游">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-23T09:20:11.767Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spark并行化基本分析">
+<meta name="twitter:description" content="shuffle在有宽依赖（一个父节点的数据会被多个子节点用到）的时候会发生shuffle。在MR里，shuffle连接了map和reduce，它本身的实现在不断优化，所以在spark里，弱化了map和reduce的细节，把shuffle的概念提高了。 简单实现的情况，因为map任务和reduce任务里数据的存储方式是不清楚的，map会生成数量等于reduce任务个数的文件，每个reduce会从上游">
+
+<link rel="canonical" href="http://colortail.github.io/2019/05/08/spark-tuning/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Spark并行化基本分析 | 高登 - colortail</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">高登 - colortail</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Learning how to build Computer System</p>
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2019/05/08/spark-tuning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spark并行化基本分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-08 23:18:28" itemprop="dateCreated datePublished" datetime="2019-05-08T23:18:28+08:00">2019-05-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 17:20:11" itemprop="dateModified" datetime="2020-02-23T17:20:11+08:00">2020-02-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="shuffle"><a href="#shuffle" class="headerlink" title="shuffle"></a>shuffle</h4><p>在有宽依赖（一个父节点的数据会被多个子节点用到）的时候会发生shuffle。在MR里，shuffle连接了map和reduce，它本身的实现在不断优化，所以在spark里，弱化了map和reduce的细节，把shuffle的概念提高了。</p>
+<p>简单实现的情况，因为map任务和reduce任务里数据的存储方式是不清楚的，map会生成数量等于reduce任务个数的文件，每个reduce会从上游<strong>所有</strong>的节点去取数据。但这其实有优化空间，比如相同key的数据已经在一个机器上了呢？是不需要从所有节点拉数据的。</p>
+<p>从另一个方面，简单理解，若数据分组key改变了，就会完全shuffle：如果下一个分组的方式和上一个分组的方式没有关系，会导致完全shuffle发生。</p>
+<h4 id="partition是数据的逻辑映射"><a href="#partition是数据的逻辑映射" class="headerlink" title="partition是数据的逻辑映射"></a>partition是数据的逻辑映射</h4><p>Spark和MR在容错上不一样，Spark不用在HDFS上多副本，如果一个节点出错了，理论上就重新从父RDD计算出来。</p>
+<p>partition是逻辑概念，partition和任务相关，用于计算。在数据层面，文件块是block的概念，但block是专门的StoreManager去管理。虽然不是一回事，但总之是有对应关系的。</p>
+<p>在缩小一个rdd的partition时，是会发生shuffle的，只是不是完全shuffle。</p>
+<h4 id="算子和MR"><a href="#算子和MR" class="headerlink" title="算子和MR"></a>算子和MR</h4><ul>
+<li><p>Spark的算子是要对应上MR的，对于满足交换律和结合律操作，可以用类似combiner的处理，在mapper节点完成。</p>
+<p>以关系代数的为例：</p>
+<p>| 操作  | map              | reduce |<br>| ——- | ————————| ——— |<br>| where | t若满足条件才输出(t,t) |        |<br>| select | t选择对应列,(t’, t’) |        |<br>| select distinct | t选择对应列(t’, t’) | (t’, [t’,t’…])去重 (t’, t’) |<br>| union all | t直接输出(t,t) |  |<br>| union |  t直接输出(t,t) |   (t, [t,t…])输出 (t, t)    |<br>| intersection | t 输出 (t,t) | 满足(t, [t,t]) 才输出 |<br>| difference | t 输出 (t, x)或(t, y) | 满足(t, [x]) 才输出 |<br>| join | (a,b)和(b,c) 输出 (b, (a, x))或(b, (c,y)) | (b,[(a,x),(c,y),(d,x),(e,y)…])将x的和y的分开，然后两边做笛卡尔积，输出[（a,b,c）,(a,b,e), (d,b,c),(d,b,e)…] |<br>| groupby | 按key t输出 (t, a)，(t, b)… |  |</p>
+</li>
+</ul>
+<h4 id="并行度"><a href="#并行度" class="headerlink" title="并行度"></a>并行度</h4><p>partition是计算的逻辑单位，应该有多少paritition就有多少task，就能有多大的并行。默认情况，map的并行就是输入的partition数量，这个和文件大小有关，reduce的并行是父rdd的最大partition个数。</p>
+<p>每次做map操作，分区信息都会丢失，所以map类操作提供了preservedPartition来保留分区。这也是为什么对pair rdd更推荐用mapValues，因为它保留了分区，filter也是一个保留了分区的算子。</p>
+<p>spark.default.parallelism：这个参数适用于RDD，设置了任务的并行度，对于map和reduce的task都有用。</p>
+<p>spark.sql.shuffle.partitions：这参数针对dataframe的。shuffle的个数其实反应的也是reduce的个数，如果shuffle partition多了，那reduce的并行度就会高。</p>
+<h4 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h4><p>FAIR调度：比较TaskSetManager（一个stage中所有的task）中runningTasks和其minShare值，优先执行runningTasks比较少的，使得资源不被长时间的任务占据了。</p>
+<p>本地化调度：采用延迟调度算法，先判别task的locality，看executor是否满足（任务的可容忍的延迟），不满足则逐步退化。</p>
+<h4 id="动态资源申请"><a href="#动态资源申请" class="headerlink" title="动态资源申请"></a>动态资源申请</h4><p>同时开启：spark.dynamicAllocation.enabled和ShuffleService，可以不用配置executor-num</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/distributed-system/" rel="tag"># distributed system</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/05/08/deep-learning-system-schedule/" rel="prev" title="深度学习系统知识结构">
+      <i class="fa fa-chevron-left"></i> 深度学习系统知识结构
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/23/market-modeling/" rel="next" title="营销建模">
+      营销建模 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#shuffle"><span class="nav-number">1.</span> <span class="nav-text">shuffle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#partition是数据的逻辑映射"><span class="nav-number">2.</span> <span class="nav-text">partition是数据的逻辑映射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算子和MR"><span class="nav-number">3.</span> <span class="nav-text">算子和MR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并行度"><span class="nav-number">4.</span> <span class="nav-text">并行度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调度"><span class="nav-number">5.</span> <span class="nav-text">调度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态资源申请"><span class="nav-number">6.</span> <span class="nav-text">动态资源申请</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">colortail</p>
+  <div class="site-description" itemprop="description">Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/colortail" title="GitHub → https://github.com/colortail" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tangefan@126.com" title="E-Mail → mailto:tangefan@126.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">colortail</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+</body>
+</html>

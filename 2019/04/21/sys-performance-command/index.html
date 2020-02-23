@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"colortail.github.io","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="查看cpu信息cat /proc/cpuinfo  vmstat是个linux下的命令，查看系统状态可以加两个参数指定采样的间隔时间个总的采样次数，如：vmstat 2 10，为两秒一次，共显示十次显示的值有：procs, memory, swap, io, system, cpu几个部分procs：r：等待运行的进程数b：阻塞的进程数memory：swpd：虚拟内存swap已使用的大小free">
+<meta name="keywords" content="operating system">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查看系统性能的命令">
+<meta property="og:url" content="http://colortail.github.io/2019/04/21/sys-performance-command/index.html">
+<meta property="og:site_name" content="高登 - colortail">
+<meta property="og:description" content="查看cpu信息cat /proc/cpuinfo  vmstat是个linux下的命令，查看系统状态可以加两个参数指定采样的间隔时间个总的采样次数，如：vmstat 2 10，为两秒一次，共显示十次显示的值有：procs, memory, swap, io, system, cpu几个部分procs：r：等待运行的进程数b：阻塞的进程数memory：swpd：虚拟内存swap已使用的大小free">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-23T08:55:40.410Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="查看系统性能的命令">
+<meta name="twitter:description" content="查看cpu信息cat /proc/cpuinfo  vmstat是个linux下的命令，查看系统状态可以加两个参数指定采样的间隔时间个总的采样次数，如：vmstat 2 10，为两秒一次，共显示十次显示的值有：procs, memory, swap, io, system, cpu几个部分procs：r：等待运行的进程数b：阻塞的进程数memory：swpd：虚拟内存swap已使用的大小free">
+
+<link rel="canonical" href="http://colortail.github.io/2019/04/21/sys-performance-command/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>查看系统性能的命令 | 高登 - colortail</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">高登 - colortail</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Learning how to build Computer System</p>
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2019/04/21/sys-performance-command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          查看系统性能的命令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-21 13:43:39" itemprop="dateCreated datePublished" datetime="2019-04-21T13:43:39+08:00">2019-04-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 16:55:40" itemprop="dateModified" datetime="2020-02-23T16:55:40+08:00">2020-02-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li><p>查看cpu信息<br>cat /proc/cpuinfo</p>
+</li>
+<li><p>vmstat<br>是个linux下的命令，查看系统状态<br>可以加两个参数指定采样的间隔时间个总的采样次数，如：vmstat 2 10，为两秒一次，共显示十次<br>显示的值有：procs, memory, swap, io, system, cpu几个部分<br>procs：<br>r：等待运行的进程数<br>b：阻塞的进程数<br>memory：<br>swpd：虚拟内存swap已使用的大小<br>free：空闲的物理内存的空闲<br>buff：用于buffers的内存大小，包括file meta和设备交互的数据<br>cache：用于cache的内存大小，包括文件数据和mmap调用后的内存映射信息。和buff的区别是buffer和设备交互，从设备读取或写到设备（flush），但是cache是在文件系统内部交互的。<br>swap：<br>si：从磁盘到swap的内存数据，每秒<br>so：从swap到磁盘的内存数据，每秒<br>IO：<br>bi：从块设备（如磁盘）进入到系统的块数目（blocks/s）<br>bo：从系统输出到块设备的块数目（blocks/s）<br>system：<br>in: interrupt，每秒的中断数<br>cs: context switch，每秒的上下文切换数<br>CPU：<br>us: user time, 用户CPU时间<br>sy: system time，系统CPU时间<br>id: idle，空闲的CPU时间,在2.5.61前包括了io等待时间<br>wa: waiting for io ，CPU等待IO的时间<br>st: stolen from virtual machine</p>
+</li>
+<li><p>top<br>  开头是统计区，统计了系统，进程，内存，swap的信息<br>  load average：系统1min，5min和15min内的负载情况。一般要除以CPU核数，最佳值是1。<br>  进程内显示的是各个区域在CPU使用时的占比，除了us，sy等外<br>  ni：改变优先级的进程占CPU使用率的比<br>  hi：hard interrupt硬中断<br>  si：soft interrupt</p>
+<p>  进程状态监控中：<br>  PR：进程优先级<br>  NI：nice，负值表高优先级，正值表低优先级<br>  VIRT：进程使用内存总量，包括虚拟内存和物理内存，单位都是KB<br>  RES：进程使用的物理内存大小<br>  SHR：共享内存大小<br>  S：进程状态。R：运行，S：睡眠，D，不可中断的睡眠，T：停止，Z：僵尸进程。</p>
+<p>  使用技巧：<br>  按1，查看多核运行情况<br>  shift + p/m按cpu和内存占用排序</p>
+</li>
+<li><p>ip -s link<br>也是一个linux下的命令，link表示显示链路层信息，-s表示statstic</p>
+</li>
+<li><p>df -h<br>查看磁盘</p>
+</li>
+<li><p>free -h<br>查看内存</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/operating-system/" rel="tag"># operating system</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/04/15/timeseries/" rel="prev" title="时间序列模型">
+      <i class="fa fa-chevron-left"></i> 时间序列模型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/22/category-feature/" rel="next" title="处理类别特征">
+      处理类别特征 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">colortail</p>
+  <div class="site-description" itemprop="description">Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/colortail" title="GitHub → https://github.com/colortail" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tangefan@126.com" title="E-Mail → mailto:tangefan@126.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">colortail</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

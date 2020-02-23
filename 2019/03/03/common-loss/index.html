@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"colortail.github.io","root":"/","scheme":"Muse","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="regressionMSE： mean square error mse = $\frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2$ MAE: mean absolute error mae = $\frac{1}{m} \sum_i^n|y_i - \hat{y_i}|$ RMSE: root mean mse = $\sqrt{ \frac{1}{m} \sum_i">
+<meta name="keywords" content="machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见损失函数">
+<meta property="og:url" content="http://colortail.github.io/2019/03/03/common-loss/index.html">
+<meta property="og:site_name" content="高登 - colortail">
+<meta property="og:description" content="regressionMSE： mean square error mse = $\frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2$ MAE: mean absolute error mae = $\frac{1}{m} \sum_i^n|y_i - \hat{y_i}|$ RMSE: root mean mse = $\sqrt{ \frac{1}{m} \sum_i">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-23T09:53:45.290Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常见损失函数">
+<meta name="twitter:description" content="regressionMSE： mean square error mse = $\frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2$ MAE: mean absolute error mae = $\frac{1}{m} \sum_i^n|y_i - \hat{y_i}|$ RMSE: root mean mse = $\sqrt{ \frac{1}{m} \sum_i">
+
+<link rel="canonical" href="http://colortail.github.io/2019/03/03/common-loss/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>常见损失函数 | 高登 - colortail</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">高登 - colortail</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Learning how to build Computer System</p>
+  </div>
+
+  <div class="site-nav-right"></div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://colortail.github.io/2019/03/03/common-loss/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="colortail">
+      <meta itemprop="description" content="Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="高登 - colortail">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          常见损失函数
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-03 13:59:55" itemprop="dateCreated datePublished" datetime="2019-03-03T13:59:55+08:00">2019-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-23 17:53:45" itemprop="dateModified" datetime="2020-02-23T17:53:45+08:00">2020-02-23</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="regression"><a href="#regression" class="headerlink" title="regression"></a>regression</h3><p><strong>MSE</strong>： mean square error</p>
+<p>mse = $\frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2$</p>
+<p><strong>MAE</strong>: mean absolute error</p>
+<p>mae = $\frac{1}{m} \sum_i^n|y_i - \hat{y_i}|$</p>
+<p><strong>RMSE</strong>: root mean</p>
+<p>mse = $\sqrt{ \frac{1}{m} \sum_i^n(y_i - \hat{y_i})^2}$</p>
+<p>mse和rmse被称为regression L2 loss， mae是L1 loss</p>
+<p><strong>possion loss</strong></p>
+<p>泊松回归假设：1）y服从泊松分布，即期望为参数$\lambda$,且P(y=k)= $ e^{-\lambda}\lambda^k / k! $ ，2）y的期望的对数可以通过线性组合来建模,也就是 $ E(y) = e^{w^Tx} $</p>
+<p>根据假设得: $ P(y|x;w)=\frac{e^{yw^Tx}e^{-e^{w^Tx}}}{y!} $,然后最大似然估计后得到</p>
+<p>损失函数：$ L_{possion_reg}=\sum_i^n{y_i*w^Tx_i - e^{w^Tx_i}}  $</p>
+<p>可以用于拟合计数问题，其他的广义线性模型会假设y服从其他的分布。</p>
+<a id="more"></a>
+<p><strong>quantile</strong></p>
+<p>要估计y的$\tau$分位数$\xi$</p>
+<p>定义损失函数：</p>
+<p>$\rho(y_i - \xi) = (y_i - \xi) (\tau - I_{(y_i&lt;\xi)})$</p>
+<p>这个损失函数可以表述为另一种形式：</p>
+<p>$\rho(y_i - \xi) =   (\tau - 1)(y_i - \xi)^+   + \tau(\xi - y_i )^+ $</p>
+<h3 id="classification"><a href="#classification" class="headerlink" title="classification"></a>classification</h3><p><strong>confusion matrix</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>prediction</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>real</strong></td>
+<td></td>
+<td>Positive</td>
+<td>Negative</td>
+</tr>
+<tr>
+<td></td>
+<td>Positive</td>
+<td>True Positive</td>
+<td>False Negative</td>
+</tr>
+<tr>
+<td></td>
+<td>Negative</td>
+<td>False Positive</td>
+<td>True Negative</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>混淆矩阵，True/False表示是否分类正确，Positive/Negative指示出<strong>预测</strong>的结果</li>
+<li>accuracy: $\frac{TP + TN} {TP + FN + FP + TN}$</li>
+<li>precision:  $\frac{TP}{TP + FP}$, 预测的正例中正确分类的比例</li>
+<li>recall：$\frac{TP}{TP + FN}$，将实际正例区分出来的比例</li>
+<li>F1-score:  <script type="math/tex">\frac{1}{f1\_score} = \frac{1}{precision} + \frac{1}{recall}</script></li>
+</ul>
+<p><strong>ROC</strong>: receiver operating characteristic</p>
+<p>TPR = $\frac{TP}{TP + FN}$ ，真正率：预测正例正确的占总正的比例</p>
+<p>FPR = $\frac{FP}{FP + TN}$，假正率：预测正例错误（实际为负）的占总负例的比例</p>
+<p>ROC的X轴是FPR，Y轴是TPR。AUC为ROC曲线面积。</p>
+<p>ROC曲线均在左上角，AUC越大越准确。</p>
+<p><strong> 0-1 loss </strong></p>
+<script type="math/tex; mode=display">L(\hat{y}, y) = I(\hat{y} \neq y)</script>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/12/10/a-scala-tutorial-for-java-programmers/" rel="prev" title="A-Scala-Tutorial-for-Java-Programmers">
+      <i class="fa fa-chevron-left"></i> A-Scala-Tutorial-for-Java-Programmers
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/04/15/timeseries/" rel="next" title="时间序列模型">
+      时间序列模型 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#regression"><span class="nav-number">1.</span> <span class="nav-text">regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#classification"><span class="nav-number">2.</span> <span class="nav-text">classification</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">colortail</p>
+  <div class="site-description" itemprop="description">Language, Database, Operating System, Network, Compiler, Machine Learning, Operations Research</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/colortail" title="GitHub → https://github.com/colortail" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tangefan@126.com" title="E-Mail → mailto:tangefan@126.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">colortail</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+</body>
+</html>
